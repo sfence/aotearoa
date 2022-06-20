@@ -521,6 +521,8 @@ minetest.register_node('aotearoa:ponga_fence', {
 	wield_image = "aotearoa_ponga_fence.png",
 	groups = {choppy = 3, oddly_breakable_by_hand = 1, flammable = 2},
 	sounds = default.node_sound_wood_defaults(),
+    -- @@@ Josselin2
+    use_texture_alpha = "clip",    
 })
 
 minetest.register_craft({

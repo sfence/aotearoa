@@ -75,7 +75,9 @@ for i in ipairs(aotearoa.treelist) do
 			description = treedesc.." Sapling"..sci_name,
 			drawtype = "plantlike",
 			tiles = {"aotearoa_"..treename.."_sapling.png"},
-			inventory_image = {"aotearoa_"..treename.."_sapling.png"},
+            -- @@@ Josselin2
+--			inventory_image = {"aotearoa_"..treename.."_sapling.png"},
+			inventory_image = "aotearoa_"..treename.."_sapling.png",
 			paramtype = "light",
 			paramtype2 = "waving",
 			walkable = false,
@@ -287,13 +289,17 @@ for i in ipairs(aotearoa.shrublist) do
 			is_ground_content = false,
 			groups = {tree = 1, choppy = 3, oddly_breakable_by_hand = 1, flammable = 2},
 			sounds = default.node_sound_wood_defaults(),
+            -- @@@ Josselin2
+            use_texture_alpha = "clip",            
 		})
 
 		minetest.register_node("aotearoa:"..treename.."_sapling", {
 			description = treedesc.." Sapling"..sci_name,
 			drawtype = "plantlike",
 			tiles = {"aotearoa_"..treename.."_sapling.png"},
-			inventory_image = {"aotearoa_"..treename.."_sapling.png"},
+            -- @@@ Josselin2
+--			inventory_image = {"aotearoa_"..treename.."_sapling.png"},
+			inventory_image = "aotearoa_"..treename.."_sapling.png",
 			paramtype = "light",
 			paramtype2 = "waving",
 			walkable = false,
@@ -473,6 +479,8 @@ for i in ipairs(aotearoa.plantlist) do
 			type = "fixed",
 			fixed = selbox,
 		},
+        -- @@@ Josselin2
+        use_texture_alpha = "clip",        
 	})
 
 	--singlenode bushes etc
@@ -494,6 +502,8 @@ for i in ipairs(aotearoa.plantlist) do
 			buildable_to = true,
 			groups = g,
 			sounds = default.node_sound_leaves_defaults(),
+            -- @@@ Josselin2
+            use_texture_alpha = "clip",        
 		})
 	end
 
@@ -545,7 +555,9 @@ for i in ipairs(aotearoa.bushlist) do
 		description = plantdesc.." Sapling"..sci_name,
 		drawtype = "plantlike",
 		tiles = {"aotearoa_"..plantname.."_sapling.png"},
-		inventory_image = {"aotearoa_"..plantname.."_sapling.png"},
+        -- @@@ Josselin2
+--		inventory_image = {"aotearoa_"..plantname.."_sapling.png"},
+		inventory_image = "aotearoa_"..plantname.."_sapling.png",
 		paramtype = "light",
 		paramtype2 = "waving",
 		walkable = false,
@@ -601,6 +613,8 @@ end,
 		}
 	},
 		sounds = default.node_sound_leaves_defaults(),
+        -- @@@ Josselin2
+        use_texture_alpha = "clip",                        
 	})
 
 	--stem
@@ -726,6 +740,8 @@ for i in ipairs(aotearoa.tfernlist) do
 		is_ground_content = false,
 		groups = {tree = 1, choppy = 3, oddly_breakable_by_hand = 1, flammable = 2, attached_node=1,},
 		sounds = default.node_sound_wood_defaults(),
+        -- @@@ Josselin2
+        use_texture_alpha = "clip",         
 	})
 
 
@@ -733,7 +749,11 @@ for i in ipairs(aotearoa.tfernlist) do
 		description = sapdesc ..sci_name,
 		drawtype = sapdraw,
 		tiles = {sapimage},
-		inventory_image = {sapimage},
+        -- @@@ Josselin2
+--		inventory_image = {sapimage},
+		inventory_image = sapimage,
+        -- @@@ Josselin2
+        use_texture_alpha = "clip",         
 		node_box = {
 			type = "fixed",
 			fixed = {sapbox,},
@@ -741,7 +761,7 @@ for i in ipairs(aotearoa.tfernlist) do
 		selection_box = {
 			type = "fixed",
 	        	fixed = {sapbox,},
-    },
+        },
 		paramtype = "light",
 		paramtype2 = "waving",
 		walkable = false,

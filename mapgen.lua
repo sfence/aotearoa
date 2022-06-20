@@ -785,8 +785,11 @@ minetest.register_biome({
   depth_riverbed = 1,
   y_min = beach_min,
 	y_max = beach_max,
-	heat_point = s_estuary_temp,
-	humidity_point = s_estuary_hum,
+-- @@@ Josselin2
+--	heat_point = s_estuary_temp,
+--	humidity_point = s_estuary_hum,
+	heat_point = sth_estuary_temp,
+	humidity_point = sth_estuary_hum,
 })
 
 

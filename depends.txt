@@ -1,7 +1,0 @@
-default
-stairs
-dye
-doors
-farming
-ambience?
-

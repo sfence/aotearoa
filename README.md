@@ -1,13 +1,40 @@
-# Aotearoa
-by Dokimi
+# Aotearoa REDO
 
-Current version: 0.2
+Original mod created by Dokimi, updated for Minetest v5.5.1 by Josselin2.
 
+![Screenshot](screenshot.png)
 
-A Minetest mod that replaces the default map biomes with Aotearoa, land of the long white cloud, New Zealand.
+As of 20 June 2022, the original version of this mod produces a number of annoying errors/warnings on Minetest v5.5.1. I have updated the code to fix them.
 
-Contains a large number of realistic native flora, biomes, and more. A land of dark towering forests, windswept mountains, and more.
+All changes are preceded by '@@@ Josselin2':
 
+*depends.txt*
+
+Incorporated into *mod.conf*, then deleted
+
+*description.txt*
+
+Incorporated into *mod.conf*, then deleted
+
+*crafting.lua*
+
+The ponga fence has been given 'use_texture_alpha = "clip"'
+
+*node_defs.lua*
+
+Fixed invalid values for the inventory image in various generic sapling functions
+
+Some items have been given 'use_texture_alpha = "clip"'
+
+*mapgen.lua*
+
+Fixed typos in variable names used in the Southern Estuary biome
+
+*README.md*
+
+Made the screenshot explicitly visible in this document.
+
+The rest of this file comprises the original README text.
 
 # Instructions:
 Designed for use with mg_valleys.
