@@ -8,8 +8,8 @@
 
 ------------------------------
 --mamaku
-local f1 = { name = "aotearoa:mamaku_tree" }
-local f2 = { name = "aotearoa:mamaku_crown" }
+local f1 = { name = "hades_aotearoa:mamaku_tree" }
+local f2 = { name = "hades_aotearoa:mamaku_crown" }
 aotearoa.mamaku1 = {
   size = {y = 10, x = 1, z = 1},
 data = {
@@ -29,8 +29,8 @@ data = {
 
 ------------------------------
 --silver_fern
-local f3 = { name = "aotearoa:silver_fern_tree" }
-local f4 = { name = "aotearoa:silver_fern_crown" }
+local f3 = { name = "hades_aotearoa:silver_fern_tree" }
+local f4 = { name = "hades_aotearoa:silver_fern_crown" }
 aotearoa.silver_fern1 = {
   size = {y = 5, x = 1, z = 1},
 data = {
@@ -50,9 +50,9 @@ data = {
 
 ------------------------------
 --wheki
-local f5 = { name = "aotearoa:wheki_tree" }
-local f6 = { name = "aotearoa:wheki_skirt" }
-local f7 = { name = "aotearoa:wheki_crown" }
+local f5 = { name = "hades_aotearoa:wheki_tree" }
+local f6 = { name = "hades_aotearoa:wheki_skirt" }
+local f7 = { name = "hades_aotearoa:wheki_crown" }
 aotearoa.wheki1 = {
   size = {y = 5, x = 1, z = 1},
 data = {
@@ -75,8 +75,8 @@ data = {
 
 ------------------------------
 --Cabbage Tree
-local p1 = { name = "aotearoa:cabbage_tree_tree" }
-local p2 = { name = "aotearoa:cabbage_tree_crown" }
+local p1 = { name = "hades_aotearoa:cabbage_tree_tree" }
+local p2 = { name = "hades_aotearoa:cabbage_tree_crown" }
 aotearoa.cabbage_tree1 = {
   size = {y = 6, x = 1, z = 1},
 data = {
@@ -95,9 +95,9 @@ data = {
 
 
 --Nikau Palm
-local p3 = { name = "aotearoa:nikau_palm_tree" }
-local p4 = { name = "aotearoa:nikau_palm_skirt" }
-local p5 = { name = "aotearoa:nikau_palm_crown" }
+local p3 = { name = "hades_aotearoa:nikau_palm_tree" }
+local p4 = { name = "hades_aotearoa:nikau_palm_skirt" }
+local p5 = { name = "hades_aotearoa:nikau_palm_crown" }
 aotearoa.nikau_palm1 = {
   size = {y = 15, x = 1, z = 1},
 data = {
@@ -116,7 +116,7 @@ data = {
 
 --------------------------------------
 --Rotten stump
-local s1 = { name = "aotearoa:rotten_wood" }
+local s1 = { name = "hades_aotearoa:rotten_wood" }
 aotearoa.stump1 = {
   size = {y = 3, x = 1, z = 1},
   data = {
@@ -135,8 +135,8 @@ data = {
 
 -------------------------------
 --Raupo
-local r1 = { name = "aotearoa:raupo" }
-local r2 = { name = "aotearoa:raupo_flower" }
+local r1 = { name = "hades_aotearoa:raupo" }
+local r2 = { name = "hades_aotearoa:raupo_flower" }
 aotearoa.raupo1 = {
   size = {y = 4, x = 1, z = 1},
   data = {

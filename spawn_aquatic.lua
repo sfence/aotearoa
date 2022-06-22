@@ -6,7 +6,7 @@
 --Pipi shellfish beds
 minetest.register_ore({
 		ore_type        = "puff",
-		ore             = "aotearoa:sand_with_pipi",
+		ore             = "hades_aotearoa:sand_with_pipi",
 		wherein         = {"default:sand"},
 		clust_scarcity  = 16 * 16 * 16,
 		clust_size      = 3,
@@ -30,8 +30,8 @@ minetest.register_ore({
 
 minetest.register_ore({
 		ore_type        = "puff",
-		ore             = "aotearoa:iron_sand_with_pipi",
-		wherein         = {"aotearoa:iron_sand"},
+		ore             = "hades_aotearoa:iron_sand_with_pipi",
+		wherein         = {"hades_aotearoa:iron_sand"},
 		clust_scarcity  = 16 * 16 * 16,
 		clust_size      = 3,
 		y_min           = -7,
@@ -56,8 +56,8 @@ minetest.register_ore({
 --cockle shellfish beds
 minetest.register_ore({
 		ore_type        = "puff",
-		ore             = "aotearoa:mud_with_cockles",
-		wherein         = {"aotearoa:mud"},
+		ore             = "hades_aotearoa:mud_with_cockles",
+		wherein         = {"hades_aotearoa:mud"},
 		clust_scarcity  = 16 * 16 * 16,
 		clust_size      = 3,
 		y_min           = -7,

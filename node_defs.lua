@@ -46,7 +46,7 @@ for i in ipairs(aotearoa.treelist) do
 	local droprarity = 50
 
 
-		minetest.register_node("aotearoa:"..treename.."_tree", {
+		minetest.register_node("hades_aotearoa:"..treename.."_tree", {
 			description = treedesc.." Tree"..sci_name,
 			tiles = {
 				"aotearoa_"..treename.."_tree_top.png",
@@ -57,21 +57,21 @@ for i in ipairs(aotearoa.treelist) do
 			paramtype2 = "facedir",
 			is_ground_content = false,
 			groups = {tree = 1, choppy = 2, flammable = 2},
-			sounds = default.node_sound_wood_defaults(),
+			sounds = hades_sounds.node_sound_wood_defaults(),
 			on_place = minetest.rotate_node,
 		})
 
-		minetest.register_node("aotearoa:"..treename.."_wood", {
+		minetest.register_node("hades_aotearoa:"..treename.."_wood", {
 			description = treedesc.." Wooden Planks"..sci_name,
 			tiles = {"aotearoa_"..treename.."_wood.png"},
 			paramtype = "light",
 			paramtype2 = "facedir",
 			is_ground_content = false,
 			groups = {choppy = 2, oddly_breakable_by_hand = 2, flammable = 2, wood = 1},
-			sounds = default.node_sound_wood_defaults(),
+			sounds = hades_sounds.node_sound_wood_defaults(),
 		})
 
-		minetest.register_node("aotearoa:"..treename.."_sapling", {
+		minetest.register_node("hades_aotearoa:"..treename.."_sapling", {
 			description = treedesc.." Sapling"..sci_name,
 			drawtype = "plantlike",
 			tiles = {"aotearoa_"..treename.."_sapling.png"},
@@ -87,16 +87,16 @@ for i in ipairs(aotearoa.treelist) do
 				fixed = {-0.3, -0.5, -0.3, 0.3, 0.35, 0.3}
 			},
 			groups = {snappy=2,dig_immediate=3,flammable=2,attached_node=1,sapling=1},
-			sounds = default.node_sound_defaults(),
+			sounds = hades_sounds.node_sound_defaults(),
 			on_timer = function(pos,elapsed)
-				aotearoa.grow_sapling(pos, treename, "aotearoa:"..treename.."_tree")
+				aotearoa.grow_sapling(pos, treename, "hades_aotearoa:"..treename.."_tree")
 			end,
 			on_construct = function(pos)
 				minetest.get_node_timer(pos):start(math.random(300, 1500))
 			end,
 			on_place = function(itemstack, placer, pointed_thing)
 				itemstack = default.sapling_on_place(itemstack, placer, pointed_thing,
-			"aotearoa:"..treename.."_sapling",
+			"hades_aotearoa:"..treename.."_sapling",
 			-- minp, maxp to be checked, relative to sapling pos
 			-- minp_relative.y = 1 because sapling pos has been checked
 			{x = -2, y = 1, z = -2},
@@ -117,7 +117,7 @@ for i in ipairs(aotearoa.treelist) do
 			g = {snappy = 3, flammable = 2, leaves = 1, leafdecay = 1}
 		end
 
-		minetest.register_node("aotearoa:"..treename.."_leaves", {
+		minetest.register_node("hades_aotearoa:"..treename.."_leaves", {
 			description = treedesc.." Leaves"..sci_name,
 			drawtype = "allfaces_optional",
 			tiles ={"aotearoa_"..treename.."_leaves.png" },
@@ -126,13 +126,14 @@ for i in ipairs(aotearoa.treelist) do
 			walkable = false,
 			--sunlight_propagates = true,
 			groups = g,
-			sounds = default.node_sound_leaves_defaults(),
+			_hades_trees_trunk = "hades_aotearoa:"..treename.."_tree",
+			sounds = hades_sounds.node_sound_leaves_defaults(),
 
 			drop = {
 				max_items = 1,
 				items = {
-					{items = {"aotearoa:"..treename.."_sapling"}, rarity = droprarity },
-					{items = {"aotearoa:"..treename.."_leaves"} }
+					{items = {"hades_aotearoa:"..treename.."_sapling"}, rarity = droprarity },
+					{items = {"hades_aotearoa:"..treename.."_leaves"} }
 				}
 			},
 		})
@@ -140,54 +141,58 @@ for i in ipairs(aotearoa.treelist) do
 	--stairs etc
 	stairs.register_stair_and_slab(
 		"aotearoa_"..treename.."_tree",
-		"aotearoa:"..treename.."_tree",
+		"hades_aotearoa:"..treename.."_tree",
 		{snappy=1, choppy=2, oddly_breakable_by_hand=1, flammable=2 },
 		{"aotearoa_"..treename.."_tree_top.png", "aotearoa_"..treename.."_tree_top.png", "aotearoa_"..treename.."_tree.png"
 		},
 		treedesc.." Tree Stair"..sci_name,
+		treedesc.." Tree Outer Stair"..sci_name,
+		treedesc.." Tree inner Stair"..sci_name,
 		treedesc.." Tree Slab"..sci_name,
-		default.node_sound_wood_defaults()
+		hades_sounds.node_sound_wood_defaults()
 	)
 
 	stairs.register_stair_and_slab(
 		"aotearoa_"..treename.."_wood",
-		"aotearoa:"..treename.."_wood",
+		"hades_aotearoa:"..treename.."_wood",
 		{snappy=1, choppy=2, oddly_breakable_by_hand=2, flammable=2},
 		{"aotearoa_"..treename.."_wood.png" },
 		treedesc.." Wood Stair"..sci_name,
+		treedesc.." Wood Outer Stair"..sci_name,
+		treedesc.." Wood inner Stair"..sci_name,
 		treedesc.." Wood Slab"..sci_name,
-		default.node_sound_wood_defaults()
+		hades_sounds.node_sound_wood_defaults()
 	)
 
 	-- fence
-	default.register_fence("aotearoa:fence_"..treename.."_wood", {
+	hades_fences.register_fence("hades_aotearoa:fence_"..treename.."_wood", {
 		description = treedesc.." Wood Fence"..sci_name,
 		texture = "aotearoa_"..treename.."_wood.png",
-		material = "aotearoa:"..treename.."_wood",
+		material = "hades_aotearoa:"..treename.."_wood",
 		groups = {snappy=1, choppy = 2, oddly_breakable_by_hand = 2, flammable = 2},
-		sounds = default.node_sound_wood_defaults(),
+		sounds = hades_sounds.node_sound_wood_defaults(),
 	})
 
 	--gate
-	doors.register_fencegate("aotearoa:gate_"..treename.."_wood",  {
+	doors.register_fencegate("hades_aotearoa:gate_"..treename.."_wood",  {
 		description = treedesc.." Wood Gate"..sci_name,
 		texture = "aotearoa_"..treename.."_wood.png",
-		material = "aotearoa:"..treename.."_wood",
+		material = "hades_aotearoa:"..treename.."_wood",
 		groups = {snappy=1, choppy = 2, oddly_breakable_by_hand = 2, flammable = 2},
-		sounds = default.node_sound_wood_defaults(),
+		sounds = hades_sounds.node_sound_wood_defaults(),
 	})
 
 
 	minetest.register_craft({
-	output = "aotearoa:"..treename.."_wood 4",
+	output = "hades_aotearoa:"..treename.."_wood 4",
 	recipe = {
-		{"aotearoa:"..treename.."_tree"},
+		{"hades_aotearoa:"..treename.."_tree"},
 	}
 	})
 
 	local fruitname = nil
 	if fruit then
-		fruitname = "aotearoa:"..fruit
+		fruitname = "hades_aotearoa:"..fruit
 		minetest.register_node(fruitname, {
 			description = fruitdesc ..sci_name,
 			drawtype = "plantlike",
@@ -204,22 +209,24 @@ for i in ipairs(aotearoa.treelist) do
 				fixed = selbox
 				},
 			groups = {fleshy=3, dig_immediate=3, flammable=2, leafdecay = 3, leafdecay_drop = 1},
+			_hades_trees_trunk = "hades_aotearoa:"..treename.."_tree",
 			on_use = minetest.item_eat(foodvalue),
-			sounds = default.node_sound_defaults(),
+			sounds = hades_sounds.node_sound_defaults(),
 		})
-
+	--[[
 		default.register_leafdecay({
-		trunks = {"aotearoa:"..treename.."_tree"},
-		leaves = { "aotearoa:"..treename.."_leaves", fruitname},
+		trunks = {"hades_aotearoa:"..treename.."_tree"},
+		leaves = { "hades_aotearoa:"..treename.."_leaves", fruitname},
 		radius = decay,
 		})
 
 	else
 		default.register_leafdecay({
-		trunks = {"aotearoa:"..treename.."_tree"},
-		leaves = { "aotearoa:"..treename.."_leaves" },
+		trunks = {"hades_aotearoa:"..treename.."_tree"},
+		leaves = { "hades_aotearoa:"..treename.."_leaves" },
 		radius = decay,
 		})
+	--]]
 	end
 
 end
@@ -267,7 +274,7 @@ for i in ipairs(aotearoa.shrublist) do
 	local trunkbox = {-1/6, -1/2, -1/6, 1/6, 1/2, 1/6}
 
 
-			minetest.register_node("aotearoa:"..treename.."_tree", {
+			minetest.register_node("hades_aotearoa:"..treename.."_tree", {
 			description = treedesc.." Tree"..sci_name,
 			drawtype = "nodebox",
 			tiles = {
@@ -288,12 +295,12 @@ for i in ipairs(aotearoa.shrublist) do
 			climbable = true,
 			is_ground_content = false,
 			groups = {tree = 1, choppy = 3, oddly_breakable_by_hand = 1, flammable = 2},
-			sounds = default.node_sound_wood_defaults(),
+			sounds = hades_sounds.node_sound_wood_defaults(),
             -- @@@ Josselin2
             use_texture_alpha = "clip",            
 		})
 
-		minetest.register_node("aotearoa:"..treename.."_sapling", {
+		minetest.register_node("hades_aotearoa:"..treename.."_sapling", {
 			description = treedesc.." Sapling"..sci_name,
 			drawtype = "plantlike",
 			tiles = {"aotearoa_"..treename.."_sapling.png"},
@@ -309,16 +316,16 @@ for i in ipairs(aotearoa.shrublist) do
 				fixed = {-0.3, -0.5, -0.3, 0.3, 0.35, 0.3}
 			},
 			groups = {snappy=2,dig_immediate=3,flammable=2,attached_node=1,sapling=1},
-			sounds = default.node_sound_defaults(),
+			sounds = hades_sounds.node_sound_defaults(),
 			on_timer = function(pos,elapsed)
-				aotearoa.grow_shrub_sapling(pos, treename, "aotearoa:"..treename.."_tree")
+				aotearoa.grow_shrub_sapling(pos, treename, "hades_aotearoa:"..treename.."_tree")
 			end,
 			on_construct = function(pos)
 				minetest.get_node_timer(pos):start(math.random(300, 1500))
 			end,
 			on_place = function(itemstack, placer, pointed_thing)
 				itemstack = default.sapling_on_place(itemstack, placer, pointed_thing,
-			"aotearoa:"..treename.."_sapling",
+			"hades_aotearoa:"..treename.."_sapling",
 			-- minp, maxp to be checked, relative to sapling pos
 			-- minp_relative.y = 1 because sapling pos has been checked
 			{x = -2, y = 1, z = -2},
@@ -339,7 +346,7 @@ for i in ipairs(aotearoa.shrublist) do
 			g = {snappy = 3, flammable = 2, leaves = 1, leafdecay = 1}
 		end
 
-		minetest.register_node("aotearoa:"..treename.."_leaves", {
+		minetest.register_node("hades_aotearoa:"..treename.."_leaves", {
 			description = treedesc.." Leaves"..sci_name,
 			drawtype = "allfaces_optional",
 			tiles ={"aotearoa_"..treename.."_leaves.png" },
@@ -349,12 +356,13 @@ for i in ipairs(aotearoa.shrublist) do
 			damage_per_second = damage,
 			sunlight_propagates = true,
 			groups = g,
-			sounds = default.node_sound_leaves_defaults(),
+      _hades_trees_trunk = "hades_aotearoa:"..treename.."_tree",
+			sounds = hades_sounds.node_sound_leaves_defaults(),
 			drop = {
 				max_items = 1,
 				items = {
-					{items = {"aotearoa:"..treename.."_sapling"}, rarity = droprarity },
-					{items = {"aotearoa:"..treename.."_leaves"} }
+					{items = {"hades_aotearoa:"..treename.."_sapling"}, rarity = droprarity },
+					{items = {"hades_aotearoa:"..treename.."_leaves"} }
 				}
 			},
 		})
@@ -363,13 +371,13 @@ for i in ipairs(aotearoa.shrublist) do
 	minetest.register_craft({
 	output = "default:stick 2",
 	recipe = {
-		{"aotearoa:"..treename.."_tree"},
+		{"hades_aotearoa:"..treename.."_tree"},
 	}
 	})
 
 	local fruitname = nil
 	if fruit then
-		fruitname = "aotearoa:"..fruit
+		fruitname = "hades_aotearoa:"..fruit
 		minetest.register_node(fruitname, {
 			description = fruitdesc ..sci_name,
 			drawtype = "plantlike",
@@ -386,22 +394,24 @@ for i in ipairs(aotearoa.shrublist) do
 				fixed = selbox
 				},
 			groups = {fleshy=3, dig_immediate=3, flammable=2, leafdecay = 3, leafdecay_drop = 1},
+      _hades_trees_trunk = "hades_aotearoa:"..treename.."_tree",
 			on_use = minetest.item_eat(foodvalue),
-			sounds = default.node_sound_defaults(),
+			sounds = hades_sounds.node_sound_defaults(),
 		})
-
+	--[[
 		default.register_leafdecay({
-		trunks = {"aotearoa:"..treename.."_tree"},
-		leaves = { "aotearoa:"..treename.."_leaves", fruitname},
+		trunks = {"hades_aotearoa:"..treename.."_tree"},
+		leaves = { "hades_aotearoa:"..treename.."_leaves", fruitname},
 		radius = decay,
 		})
 
 	else
 		default.register_leafdecay({
-		trunks = {"aotearoa:"..treename.."_tree"},
-		leaves = { "aotearoa:"..treename.."_leaves" },
+		trunks = {"hades_aotearoa:"..treename.."_tree"},
+		leaves = { "hades_aotearoa:"..treename.."_leaves" },
 		radius = decay,
 		})
+	--]]
 	end
 
 end
@@ -461,7 +471,7 @@ for i in ipairs(aotearoa.plantlist) do
 	end
 
 
-	minetest.register_node("aotearoa:"..plantname, {
+	minetest.register_node("hades_aotearoa:"..plantname, {
 		description = plantdesc ..sci_name,
 		drawtype = draw or "plantlike",
 		waving = 1,
@@ -474,7 +484,7 @@ for i in ipairs(aotearoa.plantlist) do
 		walkable = false,
 		buildable_to = true,
 		groups = g,
-		sounds = default.node_sound_leaves_defaults(),
+		sounds = hades_sounds.node_sound_leaves_defaults(),
 		selection_box = {
 			type = "fixed",
 			fixed = selbox,
@@ -485,7 +495,7 @@ for i in ipairs(aotearoa.plantlist) do
 
 	--singlenode bushes etc
 	if draw == "nodebox" then
-		minetest.register_node("aotearoa:"..plantname, {
+		minetest.register_node("hades_aotearoa:"..plantname, {
 			description = plantdesc,
 			drawtype = "nodebox",
 			node_box = {
@@ -501,7 +511,7 @@ for i in ipairs(aotearoa.plantlist) do
 			walkable = false,
 			buildable_to = true,
 			groups = g,
-			sounds = default.node_sound_leaves_defaults(),
+			sounds = hades_sounds.node_sound_leaves_defaults(),
             -- @@@ Josselin2
             use_texture_alpha = "clip",        
 		})
@@ -510,7 +520,7 @@ for i in ipairs(aotearoa.plantlist) do
 
 	minetest.register_craft({
 		type = "fuel",
-		recipe = "aotearoa:"..plantname,
+		recipe = "hades_aotearoa:"..plantname,
 		burntime = 1,
 	})
 
@@ -551,7 +561,7 @@ for i in ipairs(aotearoa.bushlist) do
 	end
 
 	--sapling
-	minetest.register_node("aotearoa:"..plantname.."_sapling", {
+	minetest.register_node("hades_aotearoa:"..plantname.."_sapling", {
 		description = plantdesc.." Sapling"..sci_name,
 		drawtype = "plantlike",
 		tiles = {"aotearoa_"..plantname.."_sapling.png"},
@@ -567,16 +577,16 @@ for i in ipairs(aotearoa.bushlist) do
 			fixed = {-0.3, -0.5, -0.3, 0.3, 0.35, 0.3}
 		},
 		groups = {snappy=2,dig_immediate=3,flammable=2,attached_node=1,sapling=1},
-		sounds = default.node_sound_defaults(),
+		sounds = hades_sounds.node_sound_defaults(),
 		on_timer = function(pos,elapsed)
-			aotearoa.grow_bush_sapling(pos, plantname, "aotearoa:"..plantname.."_stem")
+			aotearoa.grow_bush_sapling(pos, plantname, "hades_aotearoa:"..plantname.."_stem")
 		end,
 		on_construct = function(pos)
 			minetest.get_node_timer(pos):start(math.random(300, 1500))
 		end,
 		on_place = function(itemstack, placer, pointed_thing)
 			itemstack = default.sapling_on_place(itemstack, placer, pointed_thing,
-		"aotearoa:"..plantname.."_sapling",
+		"hades_aotearoa:"..plantname.."_sapling",
 		-- minp, maxp to be checked, relative to sapling pos
 		-- minp_relative.y = 1 because sapling pos has been checked
 		{x = -2, y = 1, z = -2},
@@ -590,7 +600,7 @@ end,
 	})
 
 	--leaves
-	minetest.register_node("aotearoa:"..plantname, {
+	minetest.register_node("hades_aotearoa:"..plantname, {
 		description = plantdesc.. " Leaves"..sci_name,
 		drawtype = "nodebox",
 		node_box = {
@@ -608,17 +618,17 @@ end,
 		drop = {
 		max_items = 1,
 		items = {
-			{items = {"aotearoa:"..plantname.."_sapling",}, rarity = droprarity},
-			{items = {"aotearoa:"..plantname}}
+			{items = {"hades_aotearoa:"..plantname.."_sapling",}, rarity = droprarity},
+			{items = {"hades_aotearoa:"..plantname}}
 		}
 	},
-		sounds = default.node_sound_leaves_defaults(),
+		sounds = hades_sounds.node_sound_leaves_defaults(),
         -- @@@ Josselin2
         use_texture_alpha = "clip",                        
 	})
 
 	--stem
-	minetest.register_node("aotearoa:"..plantname.."_stem", {
+	minetest.register_node("hades_aotearoa:"..plantname.."_stem", {
 		description = plantdesc.." Stem"..sci_name,
 		drawtype = "plantlike",
 		visual_scale = 1.41,
@@ -628,7 +638,7 @@ end,
 		paramtype = "light",
 		sunlight_propagates = true,
 		groups = {choppy = 2, oddly_breakable_by_hand = 1, flammable = 2},
-		sounds = default.node_sound_wood_defaults(),
+		sounds = hades_sounds.node_sound_wood_defaults(),
 		selection_box = {
 			type = "fixed",
 			fixed = {-7 / 16, -0.5, -7 / 16, 7 / 16, 0.5, 7 / 16},
@@ -637,16 +647,16 @@ end,
 
 	--craft stem into stick.
 	minetest.register_craft({
-	output = "default:stick",
+	output = "hades_core:stick",
 	recipe = {
-		{"aotearoa:"..plantname.."_stem"},
+		{"hades_aotearoa:"..plantname.."_stem"},
 	}
 	})
 
 	--burnables
 	minetest.register_craft({
 		type = "fuel",
-		recipe = "aotearoa:"..plantname.."_stem",
+		recipe = "hades_aotearoa:"..plantname.."_stem",
 		burntime = 2,
 	})
 
@@ -709,16 +719,16 @@ for i in ipairs(aotearoa.tfernlist) do
 		sapbox = {-0.3, -0.5, -0.3, 0.3, 0.35, 0.3}
 		--and while we are here...(ferns a useless stick!)
 		minetest.register_craft({
-			output = "default:stick 2",
+			output = "hades_core:stick 2",
 			recipe = {
-				{"aotearoa:"..treename.."_tree"},
+				{"hades_aotearoa:"..treename.."_tree"},
 			}
 		})
 	end
 
 
 	-- trunk
-	minetest.register_node("aotearoa:"..treename.."_tree", {
+	minetest.register_node("hades_aotearoa:"..treename.."_tree", {
 		description = treedesc .." Trunk "..sci_name,
 		drawtype = "nodebox",
 		tiles = {
@@ -739,13 +749,13 @@ for i in ipairs(aotearoa.tfernlist) do
 		climbable = true,
 		is_ground_content = false,
 		groups = {tree = 1, choppy = 3, oddly_breakable_by_hand = 1, flammable = 2, attached_node=1,},
-		sounds = default.node_sound_wood_defaults(),
+		sounds = hades_sounds.node_sound_wood_defaults(),
         -- @@@ Josselin2
         use_texture_alpha = "clip",         
 	})
 
 
-	minetest.register_node("aotearoa:"..treename.."_sapling", {
+	minetest.register_node("hades_aotearoa:"..treename.."_sapling", {
 		description = sapdesc ..sci_name,
 		drawtype = sapdraw,
 		tiles = {sapimage},
@@ -767,16 +777,16 @@ for i in ipairs(aotearoa.tfernlist) do
 		walkable = false,
 		is_ground_content = true,
 		groups = {snappy=2,dig_immediate=3,flammable=2,attached_node=1,sapling=1},
-		sounds = default.node_sound_defaults(),
+		sounds = hades_sounds.node_sound_defaults(),
 		on_timer = function(pos,elapsed)
-			aotearoa.grow_tree_fern_sapling(pos, treename, "aotearoa:"..treename.."_tree")
+			aotearoa.grow_tree_fern_sapling(pos, treename, "hades_aotearoa:"..treename.."_tree")
 		end,
 		on_construct = function(pos)
 			minetest.get_node_timer(pos):start(math.random(300, 1500))
 		end,
 		on_place = function(itemstack, placer, pointed_thing)
 			itemstack = default.sapling_on_place(itemstack, placer, pointed_thing,
-		"aotearoa:"..treename.."_sapling",
+		"hades_aotearoa:"..treename.."_sapling",
 		-- minp, maxp to be checked, relative to sapling pos
 		-- minp_relative.y = 1 because sapling pos has been checked
 		{x = -2, y = 1, z = -2},
@@ -789,7 +799,7 @@ end,
 
 
 	-- tree fern crown
-	minetest.register_node("aotearoa:"..treename.."_crown", {
+	minetest.register_node("hades_aotearoa:"..treename.."_crown", {
 		description = treedesc.. " Crown " ..sci_name,
 		drawtype = "plantlike",
 		visual_scale = crownscale,
@@ -802,11 +812,11 @@ end,
 		drop = {
 			max_items = 1,
 			items = {
-				{items = {"aotearoa:"..treename.."_sapling"}, rarity = droprarity },
-				{items = {"aotearoa:"..treename.."_crown"} }
+				{items = {"hades_aotearoa:"..treename.."_sapling"}, rarity = droprarity },
+				{items = {"hades_aotearoa:"..treename.."_crown"} }
 			}
 		},
-		sounds = default.node_sound_leaves_defaults(),
+		sounds = hades_sounds.node_sound_leaves_defaults(),
 		selection_box = {
 			type = "fixed",
 			fixed = crownbox,
@@ -818,12 +828,12 @@ end,
 		local drop_skirt = nil
 		--get the trunk if fern
 		if treetype == "fern" then
-			drop_skirt = "aotearoa:"..treename.."_tree"
+			drop_skirt = "hades_aotearoa:"..treename.."_tree"
 		else
-			drop_skirt = "aotearoa:"..treename.."_skirt"
+			drop_skirt = "hades_aotearoa:"..treename.."_skirt"
 		end
 
-		minetest.register_node("aotearoa:"..treename.."_skirt", {
+		minetest.register_node("hades_aotearoa:"..treename.."_skirt", {
 			description = treedesc.. "Top" ..sci_name,
 			drawtype = "nodebox",
 			tiles = {
@@ -844,13 +854,13 @@ end,
 			is_ground_content = false,
 			groups = {tree = 1, choppy = 3, oddly_breakable_by_hand = 1, flammable = 2, attached_node=1},
 			drop = drop_skirt,
-			sounds = default.node_sound_wood_defaults(),
+			sounds = hades_sounds.node_sound_wood_defaults(),
 			--collapse tree when cut
 			after_destruct = function(pos,oldnode)
 				local node = minetest.get_node({x=pos.x,y=pos.y+1,z=pos.z})
-				if node.name == "aotearoa:"..treename.."_tree" then
+				if node.name == "hades_aotearoa:"..treename.."_tree" then
 						minetest.dig_node({x=pos.x,y=pos.y+1,z=pos.z})
-						--minetest.add_item(pos,"aotearoa:"..treename.."_tree")
+						--minetest.add_item(pos,"hades_aotearoa:"..treename.."_tree")
 				end
 			end,
 		})
@@ -869,7 +879,7 @@ end
 
 -------------
 --Raupo
-minetest.register_node("aotearoa:raupo", {
+minetest.register_node("hades_aotearoa:raupo", {
 	description = "Raupo\n".. minetest.colorize("#adaba0","(Typha orientalis)"),
 	drawtype = "plantlike",
 	waving = 1,
@@ -881,24 +891,24 @@ minetest.register_node("aotearoa:raupo", {
 	walkable = false,
 	buildable_to = true,
 	groups = {snappy = 3, flammable = 1, dry_grass = 1},
-	sounds = default.node_sound_leaves_defaults(),
+	sounds = hades_sounds.node_sound_leaves_defaults(),
 	selection_box = {
 		type = "fixed",
 		fixed = {-0.1, -0.5, -0.1, 0.1, 0.5, 0.1},
 	},
 	after_dig_node = function(pos, node, metadata, digger)
-		aotearoa.dig_up(pos, {"aotearoa:raupo", "aotearoa:raupo_flower"}, digger)
+		aotearoa.dig_up(pos, {"hades_aotearoa:raupo", "hades_aotearoa:raupo_flower"}, digger)
 	end,
 })
 
 minetest.register_craft({
 	type = "fuel",
-	recipe = "aotearoa:raupo",
+	recipe = "hades_aotearoa:raupo",
 	burntime = 1,
 })
 
 --raupo flower
-minetest.register_node("aotearoa:raupo_flower", {
+minetest.register_node("hades_aotearoa:raupo_flower", {
 	description = "Raupo Flower\n".. minetest.colorize("#adaba0","(Typha orientalis)"),
 	drawtype = "plantlike",
 	waving = 1,
@@ -910,7 +920,7 @@ minetest.register_node("aotearoa:raupo_flower", {
 	walkable = false,
 	buildable_to = true,
 	groups = {snappy = 3, flammable = 1, dry_grass = 1},
-	sounds = default.node_sound_leaves_defaults(),
+	sounds = hades_sounds.node_sound_leaves_defaults(),
 	selection_box = {
 		type = "fixed",
 		fixed = {-0.1, -0.5, -0.1, 0.1, 0.5, 0.1},
@@ -919,7 +929,7 @@ minetest.register_node("aotearoa:raupo_flower", {
 
 minetest.register_craft({
 	type = "fuel",
-	recipe = "aotearoa:raupo_flower",
+	recipe = "hades_aotearoa:raupo_flower",
 	burntime = 1,
 })
 
@@ -929,7 +939,7 @@ minetest.register_craft({
 -----------------------------
 -- Pipi (shellfish)
 
-minetest.register_node("aotearoa:pipi", {
+minetest.register_node("hades_aotearoa:pipi", {
 	description = "Pipi\n".. minetest.colorize("#adaba0","(Paphies australis)"),
 	drawtype = "plantlike",
 	paramtype = "light",
@@ -944,55 +954,55 @@ minetest.register_node("aotearoa:pipi", {
 	},
 	groups = {fleshy = 3, dig_immediate = 3},
 
-	sounds = default.node_sound_gravel_defaults(),
+	sounds = hades_sounds.node_sound_gravel_defaults(),
 	--rebury shellfish
 	on_timer = function(pos)
 		local below = {x = pos.x, y = pos.y - 1, z = pos.z}
 			if minetest.get_node(below).name == "default:sand" then
 				minetest.set_node(pos, {name = "air"})
-				minetest.set_node(below, {name = "aotearoa:sand_with_pipi"})
-			elseif minetest.get_node(below).name == "aotearoa:iron_sand" then
+				minetest.set_node(below, {name = "hades_aotearoa:sand_with_pipi"})
+			elseif minetest.get_node(below).name == "hades_aotearoa:iron_sand" then
 				minetest.set_node(pos, {name = "air"})
-				minetest.set_node(below, {name = "aotearoa:iron_sand_with_pipi"})
+				minetest.set_node(below, {name = "hades_aotearoa:iron_sand_with_pipi"})
 			end
 	end,
 	on_construct = function(pos)
 		minetest.get_node_timer(pos):start(math.random(3, 5))
 	end,
 	--eat and get shells
-	--on_use = minetest.item_eat(1,"aotearoa:seashells")
+	--on_use = minetest.item_eat(1,"hades_aotearoa:seashells")
 	on_use = minetest.item_eat(1)	
 })
 
 --pipi in sand
-minetest.register_node("aotearoa:sand_with_pipi", {
+minetest.register_node("hades_aotearoa:sand_with_pipi", {
 	description = "Sand with Pipi",
 	tiles = {"aotearoa_sand_with_pipi.png"},
 	groups = {crumbly = 3, falling_node = 1, sand = 1},
-	sounds = default.node_sound_sand_defaults(),
+	sounds = hades_sounds.node_sound_sand_defaults(),
 	--dig up the shellfish
 	on_punch = function(pos, node, puncher)
-		puncher:get_inventory():add_item('main', "aotearoa:pipi")
+		puncher:get_inventory():add_item('main', "hades_aotearoa:pipi")
 		minetest.set_node(pos, {name = "default:sand"})
 	end,
 })
 
-minetest.register_node("aotearoa:iron_sand_with_pipi", {
+minetest.register_node("hades_aotearoa:iron_sand_with_pipi", {
 	description = "Iron-sand with Pipi",
 	tiles = {"aotearoa_iron_sand_with_pipi.png"},
 	groups = {crumbly = 3, falling_node = 1, sand = 1},
-	sounds = default.node_sound_sand_defaults(),
+	sounds = hades_sounds.node_sound_sand_defaults(),
 	--dig up the shellfish
 	on_punch = function(pos, node, puncher)
-		puncher:get_inventory():add_item('main', "aotearoa:pipi")
-		minetest.set_node(pos, {name = "aotearoa:iron_sand"})
+		puncher:get_inventory():add_item('main', "hades_aotearoa:pipi")
+		minetest.set_node(pos, {name = "hades_aotearoa:iron_sand"})
 	end,
 })
 
 -----------------------------
 -- Cockle (shellfish)
 
-minetest.register_node("aotearoa:cockle", {
+minetest.register_node("hades_aotearoa:cockle", {
 	description = "Cockle\n".. minetest.colorize("#adaba0","(Austrovenus stutchburyi)"),
 	drawtype = "plantlike",
 	paramtype = "light",
@@ -1007,35 +1017,35 @@ minetest.register_node("aotearoa:cockle", {
 	},
 	groups = {fleshy = 3, dig_immediate = 3},
 
-	sounds = default.node_sound_gravel_defaults(),
+	sounds = hades_sounds.node_sound_gravel_defaults(),
 	--rebury shellfish
 	on_timer = function(pos)
 		local below = {x = pos.x, y = pos.y - 1, z = pos.z}
-			if minetest.get_node(below).name == "aotearoa:mud" then
+			if minetest.get_node(below).name == "hades_aotearoa:mud" then
 				minetest.set_node(pos, {name = "air"})
-				minetest.set_node(below, {name = "aotearoa:mud_with_cockles"})
+				minetest.set_node(below, {name = "hades_aotearoa:mud_with_cockles"})
 			end
 	end,
 	on_construct = function(pos)
 		minetest.get_node_timer(pos):start(math.random(3, 5))
 	end,
 	--eat and get shells
-	--on_use = minetest.item_eat(1,"aotearoa:seashells")
+	--on_use = minetest.item_eat(1,"hades_aotearoa:seashells")
 	on_use = minetest.item_eat(1)	
 })
 
 --cockle in mud
-minetest.register_node("aotearoa:mud_with_cockles", {
+minetest.register_node("hades_aotearoa:mud_with_cockles", {
 	description = "Mud with Cockles",
 	tiles = {"aotearoa_mud_with_cockles.png"},
 	groups = {crumbly = 3, puts_out_fire = 1},
-	sounds = default.node_sound_dirt_defaults({
+	sounds = hades_sounds.node_sound_dirt_defaults({
 		footstep = {name = "aotearoa_mud", gain = 0.4},
 		dug = {name = "aotearoa_mud", gain = 0.4},
 	}),
 	--dig up the shellfish
 	on_punch = function(pos, node, puncher)
-		puncher:get_inventory():add_item('main', "aotearoa:cockle")
-		minetest.set_node(pos, {name = "aotearoa:mud"})
+		puncher:get_inventory():add_item('main', "hades_aotearoa:cockle")
+		minetest.set_node(pos, {name = "hades_aotearoa:mud"})
 	end,
 })

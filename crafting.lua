@@ -33,14 +33,14 @@ minetest.register_craft({
 
 -------------------------
 --Kauri Gum
-minetest.register_craftitem("aotearoa:kauri_gum", {
+minetest.register_craftitem("hades_aotearoa:kauri_gum", {
 	description = "Kauri Gum",
 	inventory_image = "aotearoa_kauri_gum.png",
 })
 
 minetest.register_craft({
 	type = "fuel",
-	recipe = "aotearoa:kauri_gum",
+	recipe = "hades_aotearoa:kauri_gum",
 	burntime = 3,
 })
 
@@ -49,7 +49,7 @@ minetest.register_craft({
 minetest.register_craft({
 	output = 'default:torch 4',
 	recipe = {
-		{'aotearoa:kauri_gum'},
+		{'hades_aotearoa:kauri_gum'},
 		{'group:stick'},
 	}
 })
@@ -66,21 +66,21 @@ minetest.register_craft({
 minetest.register_craft({
 	output = 'default:paper',
 	recipe = {
-		{'aotearoa:kauri_grass', 'aotearoa:kauri_grass', 'aotearoa:kauri_grass'},
+		{'hades_aotearoa:kauri_grass', 'hades_aotearoa:kauri_grass', 'hades_aotearoa:kauri_grass'},
 	}
 })
 
 minetest.register_craft({
 	output = 'default:paper',
 	recipe = {
-		{'aotearoa:flax', 'aotearoa:flax', 'aotearoa:flax'},
+		{'hades_aotearoa:flax', 'hades_aotearoa:flax', 'hades_aotearoa:flax'},
 	}
 })
 
 minetest.register_craft({
 	output = 'default:paper',
 	recipe = {
-		{'aotearoa:raupo', 'aotearoa:raupo', 'aotearoa:raupo'},
+		{'hades_aotearoa:raupo', 'hades_aotearoa:raupo', 'hades_aotearoa:raupo'},
 	}
 })
 
@@ -114,7 +114,7 @@ minetest.register_craft({
 minetest.register_craft({
 	type = "shapeless",
 	output = "dye:red 4",
-	recipe = {"aotearoa:kauri_grass"},
+	recipe = {"hades_aotearoa:kauri_grass"},
 })
 
 
@@ -133,7 +133,7 @@ minetest.register_craft({
 minetest.register_craft({
 	output = "dye:blue 4",
   recipe = {
-    {'aotearoa:kauri_tree'},
+    {'hades_aotearoa:kauri_tree'},
     {'default:torch'},
   },
   replacements = {{"default:torch", "default:torch"}}
@@ -143,7 +143,7 @@ minetest.register_craft({
 minetest.register_craft({
 	output = "dye:blue 4",
   recipe = {
-    {'aotearoa:rimu_tree'},
+    {'hades_aotearoa:rimu_tree'},
     {'default:torch'},
   },
   replacements = {{"default:torch", "default:torch"}}
@@ -156,7 +156,7 @@ minetest.register_craft({
 minetest.register_craft({
 	output = "dye:black 4",
   recipe = {
-    {'aotearoa:kauri_gum'},
+    {'hades_aotearoa:kauri_gum'},
     {'default:torch'},
   },
   replacements = {{"default:torch", "default:torch"}}
@@ -166,7 +166,7 @@ minetest.register_craft({
 minetest.register_craft({
 	output = "dye:black 4",
   recipe = {
-    {'aotearoa:kahikatea_tree'},
+    {'hades_aotearoa:kahikatea_tree'},
     {'default:torch'},
   },
   replacements = {{"default:torch", "default:torch"}}
@@ -180,7 +180,7 @@ minetest.register_craft({
 minetest.register_craft({
 	output = "dye:black 4",
   recipe = {
-    {'aotearoa:mahoe_leaves'},
+    {'hades_aotearoa:mahoe_leaves'},
   },
 })
 ]]
@@ -189,7 +189,7 @@ minetest.register_craft({
 minetest.register_craft({
 	type = "cooking",
 	output = "dye:black 4",
-	recipe = "aotearoa:hinau_tree",
+	recipe = "hades_aotearoa:hinau_tree",
 })
 
 ------------
@@ -199,7 +199,7 @@ minetest.register_craft({
 minetest.register_craft({
 	output = "dye:brown 4",
   recipe = {
-    {'aotearoa:miro_tree'},
+    {'hades_aotearoa:miro_tree'},
     {'default:torch'},
   },
   replacements = {{"default:torch", "default:torch"}}
@@ -212,7 +212,7 @@ minetest.register_craft({
 minetest.register_craft({
 	type = "cooking",
 	output = "dye:red 4",
-	recipe = "aotearoa:kamahi_tree",
+	recipe = "hades_aotearoa:kamahi_tree",
 })
 
 
@@ -222,14 +222,14 @@ minetest.register_craft({
 minetest.register_craft({
 	type = "cooking",
 	output = "dye:yellow 4",
-	recipe = "aotearoa:rangiora_tree",
+	recipe = "hades_aotearoa:rangiora_tree",
 })
 
 --from kowhai flowers
 minetest.register_craft({
 	output = "dye:yellow 4",
   recipe = {
-    {'aotearoa:kowhai_leaves'},
+    {'hades_aotearoa:kowhai_leaves'},
   },
 })
 
@@ -240,10 +240,10 @@ minetest.register_craft({
 for i in ipairs(aotearoa.treelist) do
 local treename			= aotearoa.treelist[i][1]
 minetest.register_craft({
-	output = "aotearoa:fence_"..treename.."_wood 4",
+	output = "hades_aotearoa:fence_"..treename.."_wood 4",
 	recipe = {
-		{"aotearoa:"..treename.."_wood", "group:stick", "aotearoa:"..treename.."_wood"},
-		{"aotearoa:"..treename.."_wood", "group:stick", "aotearoa:"..treename.."_wood"},
+		{"hades_aotearoa:"..treename.."_wood", "group:stick", "hades_aotearoa:"..treename.."_wood"},
+		{"hades_aotearoa:"..treename.."_wood", "group:stick", "hades_aotearoa:"..treename.."_wood"},
 	}
 })
 end
@@ -259,7 +259,7 @@ end
 
 -------------
 --Bracken Root
-minetest.register_craftitem("aotearoa:cooked_bracken_root", {
+minetest.register_craftitem("hades_aotearoa:cooked_bracken_root", {
 	description = "Cooked Bracken Root",
 	inventory_image = "aotearoa_cooked_bracken_root.png",
   on_use = minetest.item_eat(2),
@@ -267,14 +267,14 @@ minetest.register_craftitem("aotearoa:cooked_bracken_root", {
 
 minetest.register_craft({
 	type = "cooking",
-	output = "aotearoa:cooked_bracken_root",
-	recipe = "aotearoa:bracken",
+	output = "hades_aotearoa:cooked_bracken_root",
+	recipe = "hades_aotearoa:bracken",
 })
 
 
 ---------
 ---Raupo Root
-minetest.register_craftitem("aotearoa:cooked_raupo_root", {
+minetest.register_craftitem("hades_aotearoa:cooked_raupo_root", {
 	description = "Cooked Raupo Root",
 	inventory_image = "aotearoa_cooked_bracken_root.png",
   on_use = minetest.item_eat(1),
@@ -282,14 +282,14 @@ minetest.register_craftitem("aotearoa:cooked_raupo_root", {
 
 minetest.register_craft({
 	type = "cooking",
-	output = "aotearoa:cooked_raupo_root",
-	recipe = "aotearoa:raupo",
+	output = "hades_aotearoa:cooked_raupo_root",
+	recipe = "hades_aotearoa:raupo",
 })
 
 
 -------------
 --Raupo pollen cake
-minetest.register_craftitem("aotearoa:pungapunga", {
+minetest.register_craftitem("hades_aotearoa:pungapunga", {
 	description = "Pungapunga Pollen Cake",
 	inventory_image = "aotearoa_pungapunga.png",
   on_use = minetest.item_eat(2),
@@ -297,8 +297,8 @@ minetest.register_craftitem("aotearoa:pungapunga", {
 
 minetest.register_craft({
 	type = "cooking",
-	output = "aotearoa:pungapunga",
-	recipe = "aotearoa:raupo_flower",
+	output = "hades_aotearoa:pungapunga",
+	recipe = "hades_aotearoa:raupo_flower",
 })
 
 
@@ -310,13 +310,13 @@ minetest.register_craft({
 --raw fruit =1. Cooking releases a little value. 4 go into a cake.
 --cake = 1.25 *4 = 5 (same as default bread.)
 
-minetest.register_craftitem("aotearoa:seed_meal", {
+minetest.register_craftitem("hades_aotearoa:seed_meal", {
 	description = "Seed Meal",
 	inventory_image = "aotearoa_cooked_karaka_kernels.png",
   --on_use = minetest.item_eat(2),
 })
 
-minetest.register_craftitem("aotearoa:seed_cake", {
+minetest.register_craftitem("hades_aotearoa:seed_cake", {
 	description = "Seed Cake",
 	inventory_image = "aotearoa_pungapunga.png",
   on_use = minetest.item_eat(5),
@@ -326,35 +326,35 @@ minetest.register_craftitem("aotearoa:seed_cake", {
 --karaka
 minetest.register_craft({
 	type = "shapeless",
-	output = "aotearoa:seed_meal",
-	recipe = {"aotearoa:karaka_fruit", "aotearoa:karaka_fruit", "aotearoa:karaka_fruit", "aotearoa:karaka_fruit"}
+	output = "hades_aotearoa:seed_meal",
+	recipe = {"hades_aotearoa:karaka_fruit", "hades_aotearoa:karaka_fruit", "hades_aotearoa:karaka_fruit", "hades_aotearoa:karaka_fruit"}
 })
 
 --tawa
 minetest.register_craft({
 	type = "shapeless",
-	output = "aotearoa:seed_meal",
-	recipe = {"aotearoa:tawa_fruit", "aotearoa:tawa_fruit", "aotearoa:tawa_fruit", "aotearoa:tawa_fruit"}
+	output = "hades_aotearoa:seed_meal",
+	recipe = {"hades_aotearoa:tawa_fruit", "hades_aotearoa:tawa_fruit", "hades_aotearoa:tawa_fruit", "hades_aotearoa:tawa_fruit"}
 })
 
 --hinau
 minetest.register_craft({
 	type = "shapeless",
-	output = "aotearoa:seed_meal",
-	recipe = {"aotearoa:hinau_fruit", "aotearoa:hinau_fruit", "aotearoa:hinau_fruit", "aotearoa:hinau_fruit"}
+	output = "hades_aotearoa:seed_meal",
+	recipe = {"hades_aotearoa:hinau_fruit", "hades_aotearoa:hinau_fruit", "hades_aotearoa:hinau_fruit", "hades_aotearoa:hinau_fruit"}
 })
 
 --cook seed meal to seed cake.
 minetest.register_craft({
 	type = "cooking",
-	output = "aotearoa:seed_cake",
-	recipe = "aotearoa:seed_meal",
+	output = "hades_aotearoa:seed_cake",
+	recipe = "hades_aotearoa:seed_meal",
 })
 
 --[[
 --Redundant 0.1 code and items...
 --Cook karaka
-minetest.register_craftitem("aotearoa:cooked_karaka_kernels", {
+minetest.register_craftitem("hades_aotearoa:cooked_karaka_kernels", {
 	description = "Cooked Karaka Kernels",
 	inventory_image = "aotearoa_cooked_karaka_kernels.png",
   on_use = minetest.item_eat(2),
@@ -362,13 +362,13 @@ minetest.register_craftitem("aotearoa:cooked_karaka_kernels", {
 
 minetest.register_craft({
 	type = "cooking",
-	output = "aotearoa:cooked_karaka_kernels",
-	recipe = "aotearoa:karaka_fruit",
+	output = "hades_aotearoa:cooked_karaka_kernels",
+	recipe = "hades_aotearoa:karaka_fruit",
 })
 
 ----------
 --Cook Tawa
-minetest.register_craftitem("aotearoa:cooked_tawa_kernels", {
+minetest.register_craftitem("hades_aotearoa:cooked_tawa_kernels", {
 	description = "Cooked Tawa Kernels",
 	inventory_image = "aotearoa_cooked_karaka_kernels.png",
   on_use = minetest.item_eat(2),
@@ -376,15 +376,15 @@ minetest.register_craftitem("aotearoa:cooked_tawa_kernels", {
 
 minetest.register_craft({
 	type = "cooking",
-	output = "aotearoa:cooked_tawa_kernels",
-	recipe = "aotearoa:tawa_fruit",
+	output = "hades_aotearoa:cooked_tawa_kernels",
+	recipe = "hades_aotearoa:tawa_fruit",
 })
 
 ]]
 
 ---------------
 --Fern fiddleheads
-minetest.register_craftitem("aotearoa:cooked_fiddlehead", {
+minetest.register_craftitem("hades_aotearoa:cooked_fiddlehead", {
 	description = "Cooked fiddlehead",
 	inventory_image = "aotearoa_cooked_fiddlehead.png",
   on_use = minetest.item_eat(1),
@@ -392,13 +392,13 @@ minetest.register_craftitem("aotearoa:cooked_fiddlehead", {
 
 minetest.register_craft({
 	type = "cooking",
-	output = "aotearoa:cooked_fiddlehead",
-	recipe = "aotearoa:mamaku_crown",
+	output = "hades_aotearoa:cooked_fiddlehead",
+	recipe = "hades_aotearoa:mamaku_crown",
 })
 
 ------------
 --mamaku pith
-minetest.register_craftitem("aotearoa:cooked_mamaku_pith", {
+minetest.register_craftitem("hades_aotearoa:cooked_mamaku_pith", {
 	description = "Cooked Mamaku Pith",
 	inventory_image = "aotearoa_cooked_mamaku_pith.png",
   on_use = minetest.item_eat(1),
@@ -406,13 +406,13 @@ minetest.register_craftitem("aotearoa:cooked_mamaku_pith", {
 
 minetest.register_craft({
 	type = "cooking",
-	output = "aotearoa:cooked_mamaku_pith",
-	recipe = "aotearoa:mamaku_tree",
+	output = "hades_aotearoa:cooked_mamaku_pith",
+	recipe = "hades_aotearoa:mamaku_tree",
 })
 
 ------------
 --Cabbage tree root
-minetest.register_craftitem("aotearoa:cooked_cabbage_tree_root", {
+minetest.register_craftitem("hades_aotearoa:cooked_cabbage_tree_root", {
 	description = "Cooked Cabbage Tree Root",
 	inventory_image = "aotearoa_cooked_cabbage_tree_root.png",
   on_use = minetest.item_eat(1),
@@ -420,13 +420,13 @@ minetest.register_craftitem("aotearoa:cooked_cabbage_tree_root", {
 
 minetest.register_craft({
 	type = "cooking",
-	output = "aotearoa:cooked_cabbage_tree_root",
-	recipe = "aotearoa:cabbage_tree_tree",
+	output = "hades_aotearoa:cooked_cabbage_tree_root",
+	recipe = "hades_aotearoa:cabbage_tree_tree",
 })
 
 --------------
 --Cabbage tree shoots
-minetest.register_craftitem("aotearoa:cooked_cabbage_tree_shoots", {
+minetest.register_craftitem("hades_aotearoa:cooked_cabbage_tree_shoots", {
 	description = "Cooked Cabbage Tree Shoots",
 	inventory_image = "aotearoa_cooked_cabbage_tree_shoots.png",
   on_use = minetest.item_eat(1),
@@ -434,13 +434,13 @@ minetest.register_craftitem("aotearoa:cooked_cabbage_tree_shoots", {
 
 minetest.register_craft({
 	type = "cooking",
-	output = "aotearoa:cooked_cabbage_tree_shoots",
-	recipe = "aotearoa:cabbage_tree_crown",
+	output = "hades_aotearoa:cooked_cabbage_tree_shoots",
+	recipe = "hades_aotearoa:cabbage_tree_crown",
 })
 
 ------------
 --Nikau shoots
-minetest.register_craftitem("aotearoa:cooked_nikau_shoots", {
+minetest.register_craftitem("hades_aotearoa:cooked_nikau_shoots", {
 	description = "Cooked Nikau Shoots",
 	inventory_image = "aotearoa_cooked_cabbage_tree_shoots.png",
   on_use = minetest.item_eat(1),
@@ -448,8 +448,8 @@ minetest.register_craftitem("aotearoa:cooked_nikau_shoots", {
 
 minetest.register_craft({
 	type = "cooking",
-	output = "aotearoa:cooked_nikau_shoots",
-	recipe = "aotearoa:nikau_palm_skirt",
+	output = "hades_aotearoa:cooked_nikau_shoots",
+	recipe = "hades_aotearoa:nikau_palm_skirt",
 })
 
 
@@ -462,7 +462,7 @@ minetest.register_craft({
 
 ---------------------------------
 --flax rope.
-minetest.register_node("aotearoa:flax_rope", {
+minetest.register_node("hades_aotearoa:flax_rope", {
 	description = "Flax Rope",
 	drawtype = "signlike",
 	tiles = {"aotearoa_flax_rope.png"},
@@ -482,23 +482,23 @@ minetest.register_node("aotearoa:flax_rope", {
 	},
 	groups = {snappy = 3, oddly_breakable_by_hand = 3, flammable = 2},
 	legacy_wallmounted = true,
-	sounds = default.node_sound_leaves_defaults(),
+	sounds = hades_sounds.node_sound_leaves_defaults(),
 })
 
 
 minetest.register_craft({
-	output = "aotearoa:flax_rope 3",
+	output = "hades_aotearoa:flax_rope 3",
   recipe = {
-    {'aotearoa:flax'},
-    {'aotearoa:flax'},
-    {'aotearoa:flax'},
+    {'hades_aotearoa:flax'},
+    {'hades_aotearoa:flax'},
+    {'hades_aotearoa:flax'},
   },
 })
 
 
 -------------------------------
 --ponga fence from Tree ferns
-minetest.register_node('aotearoa:ponga_fence', {
+minetest.register_node('hades_aotearoa:ponga_fence', {
 	description = 'Ponga Fence',
 	drawtype = "nodebox",
 	node_box = {
@@ -510,7 +510,7 @@ minetest.register_node('aotearoa:ponga_fence', {
 		connect_back = {{-1/4, -1/2,  1/4,  1/4, 1/2,  1/2}},
 		connect_right = {{ 1/4, -1/2, -1/4,  1/2, 1/2,  1/4}},
 	},
-	connects_to = { "group:crumbly", "group:wood", "group:tree", "group:stone",'aotearoa:ponga_fence',},
+	connects_to = { "group:crumbly", "group:wood", "group:tree", "group:stone",'hades_aotearoa:ponga_fence',},
 	paramtype = "light",
   tiles = {
     "aotearoa_ponga_fence_top.png",
@@ -520,41 +520,41 @@ minetest.register_node('aotearoa:ponga_fence', {
 	inventory_image = "aotearoa_ponga_fence.png",
 	wield_image = "aotearoa_ponga_fence.png",
 	groups = {choppy = 3, oddly_breakable_by_hand = 1, flammable = 2},
-	sounds = default.node_sound_wood_defaults(),
+	sounds = hades_sounds.node_sound_wood_defaults(),
     -- @@@ Josselin2
     use_texture_alpha = "clip",    
 })
 
 minetest.register_craft({
-	output = 'aotearoa:ponga_fence',
+	output = 'hades_aotearoa:ponga_fence',
 	recipe = {
 		{'', '', ''},
 		{'', '', ''},
-		{'aotearoa:wheki_tree', 'aotearoa:wheki_tree', 'aotearoa:wheki_tree'},
+		{'hades_aotearoa:wheki_tree', 'hades_aotearoa:wheki_tree', 'hades_aotearoa:wheki_tree'},
 	}
 })
 
 minetest.register_craft({
-	output = 'aotearoa:ponga_fence',
+	output = 'hades_aotearoa:ponga_fence',
 	recipe = {
 		{'', '', ''},
 		{'', '', ''},
-		{'aotearoa:silver_fern_tree', 'aotearoa:silver_fern_tree', 'aotearoa:silver_fern_tree'},
+		{'hades_aotearoa:silver_fern_tree', 'hades_aotearoa:silver_fern_tree', 'hades_aotearoa:silver_fern_tree'},
 	}
 })
 
 minetest.register_craft({
-	output = 'aotearoa:ponga_fence',
+	output = 'hades_aotearoa:ponga_fence',
 	recipe = {
 		{'', '', ''},
 		{'', '', ''},
-		{'aotearoa:mamaku_tree', 'aotearoa:mamaku_tree', 'aotearoa:mamaku_tree'},
+		{'hades_aotearoa:mamaku_tree', 'hades_aotearoa:mamaku_tree', 'hades_aotearoa:mamaku_tree'},
 	}
 })
 
 minetest.register_craft({
 	type = "fuel",
-	recipe = "aotearoa:ponga_fence",
+	recipe = "hades_aotearoa:ponga_fence",
 	burntime = 3,
 })
 
@@ -565,7 +565,7 @@ minetest.register_craft({
 --Peat as a Fuel source
 minetest.register_craft({
 	type = "fuel",
-	recipe = "aotearoa:peat",
+	recipe = "hades_aotearoa:peat",
 	burntime = 30,
 })
 
@@ -574,7 +574,7 @@ minetest.register_craft({
 	output = 'default:dirt 4',
 	recipe = {
 		{'group:sand', 'default:clay'},
-		{'aotearoa:silt', 'aotearoa:peat'},
+		{'hades_aotearoa:silt', 'hades_aotearoa:peat'},
 	}
 })
 
@@ -582,7 +582,7 @@ minetest.register_craft({
 	output = 'default:dirt 4',
 	recipe = {
 		{'group:sand', 'default:clay'},
-		{'aotearoa:silt', 'aotearoa:rotten_wood'},
+		{'hades_aotearoa:silt', 'hades_aotearoa:rotten_wood'},
 	}
 })
 
@@ -594,7 +594,7 @@ minetest.register_craft({
 minetest.register_craft({
 	type = 'cooking',
 	output = 'default:iron_lump',
-	recipe = 'aotearoa:iron_sand',
+	recipe = 'hades_aotearoa:iron_sand',
 	cooktime = 30,
 })
 
@@ -614,7 +614,7 @@ minetest.register_craft({
 
 --lime sources to crushed lime
 --to avoid recipe conflicts needs a little odd recipe... two steel crushers
-minetest.register_craftitem("aotearoa:crushed_lime", {
+minetest.register_craftitem("hades_aotearoa:crushed_lime", {
 	description = "Crushed Lime",
 	inventory_image = "aotearoa_crushed_lime.png",
 })
@@ -624,10 +624,10 @@ minetest.register_craftitem("aotearoa:crushed_lime", {
 
 --from coquina
 minetest.register_craft({
-	output = "aotearoa:crushed_lime",
+	output = "hades_aotearoa:crushed_lime",
 	recipe = {
 		{'default:steel_ingot'},
-    {'aotearoa:coquina_limestone'},
+    {'hades_aotearoa:coquina_limestone'},
     {'default:steel_ingot'},
   },
   replacements = {
@@ -638,10 +638,10 @@ minetest.register_craft({
 
 --from limestone
 minetest.register_craft({
-	output = "aotearoa:crushed_lime",
+	output = "hades_aotearoa:crushed_lime",
   recipe = {
 		{'default:steel_ingot'},
-    {'aotearoa:limestone'},
+    {'hades_aotearoa:limestone'},
     {'default:steel_ingot'},
   },
   replacements = {
@@ -651,22 +651,22 @@ minetest.register_craft({
 })
 
 --cook to quicklime
-minetest.register_craftitem("aotearoa:quicklime", {
+minetest.register_craftitem("hades_aotearoa:quicklime", {
 	description = "Quicklime",
 	inventory_image = "aotearoa_quicklime.png",
 })
 
 minetest.register_craft({
 	type = "cooking",
-	output = "aotearoa:quicklime",
-	recipe = "aotearoa:crushed_lime",
+	output = "hades_aotearoa:quicklime",
+	recipe = "hades_aotearoa:crushed_lime",
 })
 
 --make concrete
 minetest.register_craft({
-	output = "aotearoa:concrete 6",
+	output = "hades_aotearoa:concrete 6",
 	recipe = {
-		{"aotearoa:quicklime", "group:sand", "default:gravel"},
+		{"hades_aotearoa:quicklime", "group:sand", "default:gravel"},
 	}
 })
 
@@ -692,8 +692,8 @@ minetest.register_craft({
 minetest.register_craft({
 	output = 'default:mese',
 	recipe = {
-		{'aotearoa:granite', 'default:gold_ingot', 'aotearoa:gneiss'},
-		{'default:copper_ingot', 'aotearoa:pounamu', 'default:steel_ingot'},
-		{'aotearoa:andesite', 'default:tin_ingot', 'aotearoa:limestone'},
+		{'hades_aotearoa:granite', 'default:gold_ingot', 'hades_aotearoa:gneiss'},
+		{'default:copper_ingot', 'hades_aotearoa:pounamu', 'default:steel_ingot'},
+		{'hades_aotearoa:andesite', 'default:tin_ingot', 'hades_aotearoa:limestone'},
 	}
 })

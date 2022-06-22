@@ -25,16 +25,16 @@ ambience.del_set("high_up")
 ambience.add_set("mud_pool", {
 	frequency = 1000,
   nodes = {
-    "aotearoa:boiling_mud_source",
-    "aotearoa:boiling_mud_flowing",
+    "hades_aotearoa:boiling_mud_source",
+    "hades_aotearoa:boiling_mud_flowing",
   },
 	sounds = {
 		{name = "boiling_mud", length = 6}
 	},
 	sound_check = function(def)
 
-		local n = (def.totals["aotearoa:boiling_mud_source"] or 0) +
-			(def.totals["aotearoa:boiling_mud_flowing"] or 0)
+		local n = (def.totals["hades_aotearoa:boiling_mud_source"] or 0) +
+			(def.totals["hades_aotearoa:boiling_mud_flowing"] or 0)
 
     if n >= 1 then
 			return "mud_pool"
@@ -47,8 +47,8 @@ ambience.add_set("mud_pool", {
 ambience.add_set("aotearoa_tussock_day", {
 	frequency = 25,
   nodes = {
-      "aotearoa:matagouri_leaves",
-      "aotearoa:red_tussock"},
+      "hades_aotearoa:matagouri_leaves",
+      "hades_aotearoa:red_tussock"},
 	sounds = {
     {name = "kea", length = 53},
     {name = "takahe", length = 28},
@@ -56,8 +56,8 @@ ambience.add_set("aotearoa_tussock_day", {
 	sound_check = function(def)
 
     local n = (
-        (def.totals["aotearoa:matagouri_leaves"] or 0)
-        + (def.totals["aotearoa:red_tussock"] or 0)
+        (def.totals["hades_aotearoa:matagouri_leaves"] or 0)
+        + (def.totals["hades_aotearoa:red_tussock"] or 0)
      )
 
 		if (def.tod > 0.2 and def.tod < 0.8)
@@ -75,8 +75,8 @@ ambience.add_set("aotearoa_tussock_day", {
 ambience.add_set("aotearoa_muttonbird_day", {
 	frequency = 30,
   nodes = {
-      "aotearoa:common_tree_daisy_leaves",
-			"aotearoa:common_tree_daisy_tree",
+      "hades_aotearoa:common_tree_daisy_leaves",
+			"hades_aotearoa:common_tree_daisy_tree",
     },
 	sounds = {
     {name = "shearwater", length = 25},
@@ -85,9 +85,9 @@ ambience.add_set("aotearoa_muttonbird_day", {
 	sound_check = function(def)
 
     local n = (
-        (def.totals["aotearoa:common_tree_daisy_leaves"] or 0)
-				+ (def.totals["aotearoa:common_tree_daisy_tree"] or 0)
-        + (def.totals["aotearoa:leatherwood"] or 0)
+        (def.totals["hades_aotearoa:common_tree_daisy_leaves"] or 0)
+				+ (def.totals["hades_aotearoa:common_tree_daisy_tree"] or 0)
+        + (def.totals["hades_aotearoa:leatherwood"] or 0)
      )
 
 		if (def.tod > 0.2 and def.tod < 0.8)
@@ -112,13 +112,13 @@ ambience.add_set("aotearoa_forest_night", {
   nodes = {
     "default:dirt_with_grass",
     "default:dirt_with_rainforest_litter",
-    "aotearoa:forest_peat",
-		"aotearoa:gumland_soil",
-    "aotearoa:restiad_peat",
-    "aotearoa:dirt_with_dark_litter",
-    "aotearoa:dirt_with_dry_litter",
-    "aotearoa:dirt_with_moss",
-    "aotearoa:dirt_with_beech_litter",
+    "hades_aotearoa:forest_peat",
+		"hades_aotearoa:gumland_soil",
+    "hades_aotearoa:restiad_peat",
+    "hades_aotearoa:dirt_with_dark_litter",
+    "hades_aotearoa:dirt_with_dry_litter",
+    "hades_aotearoa:dirt_with_moss",
+    "hades_aotearoa:dirt_with_beech_litter",
   },
 	sounds = {
 		{name = "morepork", length = 14, gain = 0.5},
@@ -132,13 +132,13 @@ ambience.add_set("aotearoa_forest_night", {
     local n = (
         (def.totals["default:dirt_with_grass"] or 0)
         + (def.totals["default:dirt_with_rainforest_litter"] or 0)
-        + (def.totals["aotearoa:forest_peat"] or 0)
-        + (def.totals["aotearoa:restiad_peat"] or 0)
-        + (def.totals["aotearoa:dirt_with_dark_litter"] or 0)
-				+ (def.totals["aotearoa:dirt_with_dry_litter"] or 0)
-				+ (def.totals["aotearoa:gumland_soil"] or 0)
-				+ (def.totals["aotearoa:dirt_with_beech_litter"] or 0)
-        + (def.totals["aotearoa:dirt_with_moss"] or 0)
+        + (def.totals["hades_aotearoa:forest_peat"] or 0)
+        + (def.totals["hades_aotearoa:restiad_peat"] or 0)
+        + (def.totals["hades_aotearoa:dirt_with_dark_litter"] or 0)
+				+ (def.totals["hades_aotearoa:dirt_with_dry_litter"] or 0)
+				+ (def.totals["hades_aotearoa:gumland_soil"] or 0)
+				+ (def.totals["hades_aotearoa:dirt_with_beech_litter"] or 0)
+        + (def.totals["hades_aotearoa:dirt_with_moss"] or 0)
      )
 
 		if (def.tod < 0.2 or def.tod > 0.8)
@@ -157,21 +157,21 @@ ambience.add_set("aotearoa_forest_night", {
 ambience.add_set("aotearoa_birdtrees_day", {
 	frequency = 80,
   nodes = {
-    "aotearoa:pohutukawa_leaves",
-    "aotearoa:karaka_fruit",
-    "aotearoa:rimu_leaves",
-    "aotearoa:totara_leaves",
-    "aotearoa:miro_fruit",
-    "aotearoa:kahikatea_leaves",
-    "aotearoa:tawa_fruit",
-    "aotearoa:kowhai_leaves",
-    "aotearoa:kawakawa_fruit",
-    "aotearoa:mahoe_leaves",
-    "aotearoa:flax",
-    "aotearoa:cabbage_tree_crown",
-    "aotearoa:nikau_palm_crown",
-    "aotearoa:black_maire_leaves",
-    "aotearoa:hinau_fruit",
+    "hades_aotearoa:pohutukawa_leaves",
+    "hades_aotearoa:karaka_fruit",
+    "hades_aotearoa:rimu_leaves",
+    "hades_aotearoa:totara_leaves",
+    "hades_aotearoa:miro_fruit",
+    "hades_aotearoa:kahikatea_leaves",
+    "hades_aotearoa:tawa_fruit",
+    "hades_aotearoa:kowhai_leaves",
+    "hades_aotearoa:kawakawa_fruit",
+    "hades_aotearoa:mahoe_leaves",
+    "hades_aotearoa:flax",
+    "hades_aotearoa:cabbage_tree_crown",
+    "hades_aotearoa:nikau_palm_crown",
+    "hades_aotearoa:black_maire_leaves",
+    "hades_aotearoa:hinau_fruit",
   },
 	sounds = {
 		{name = "bellbirds", length = 181, gain = 1.1},
@@ -187,21 +187,21 @@ ambience.add_set("aotearoa_birdtrees_day", {
 	sound_check = function(def)
 
     local n = (
-        (def.totals["aotearoa:pohutukawa_leaves"] or 0)
-        + (def.totals["aotearoa:karaka_fruit"] or 0)
-        + (def.totals["aotearoa:rimu_leaves"] or 0)
-        + (def.totals["aotearoa:totara_leaves"] or 0)
-        + (def.totals["aotearoa:miro_fruit"] or 0)
-        + (def.totals["aotearoa:kahikatea_leaves"] or 0)
-        + (def.totals["aotearoa:tawa_fruit"] or 0)
-        + (def.totals["aotearoa:kowhai_leaves"] or 0)
-        + (def.totals["aotearoa:kawakawa_fruit"] or 0)
-        + (def.totals["aotearoa:mahoe_leaves"] or 0)
-        + (def.totals["aotearoa:flax"] or 0)
-        + (def.totals["aotearoa:cabbage_tree_crown"] or 0)
-        + (def.totals["aotearoa:nikau_palm_crown"] or 0)
-				+ (def.totals["aotearoa:black_maire_leaves"] or 0)
-				+ (def.totals["aotearoa:hinau_fruit"] or 0)
+        (def.totals["hades_aotearoa:pohutukawa_leaves"] or 0)
+        + (def.totals["hades_aotearoa:karaka_fruit"] or 0)
+        + (def.totals["hades_aotearoa:rimu_leaves"] or 0)
+        + (def.totals["hades_aotearoa:totara_leaves"] or 0)
+        + (def.totals["hades_aotearoa:miro_fruit"] or 0)
+        + (def.totals["hades_aotearoa:kahikatea_leaves"] or 0)
+        + (def.totals["hades_aotearoa:tawa_fruit"] or 0)
+        + (def.totals["hades_aotearoa:kowhai_leaves"] or 0)
+        + (def.totals["hades_aotearoa:kawakawa_fruit"] or 0)
+        + (def.totals["hades_aotearoa:mahoe_leaves"] or 0)
+        + (def.totals["hades_aotearoa:flax"] or 0)
+        + (def.totals["hades_aotearoa:cabbage_tree_crown"] or 0)
+        + (def.totals["hades_aotearoa:nikau_palm_crown"] or 0)
+				+ (def.totals["hades_aotearoa:black_maire_leaves"] or 0)
+				+ (def.totals["hades_aotearoa:hinau_fruit"] or 0)
      )
 
 		if (def.tod > 0.2 and def.tod < 0.8)
@@ -220,13 +220,13 @@ ambience.add_set("aotearoa_insect_birds_day", {
     "default:dirt_with_grass",
     "default:dirt_with_dry_grass",
     "default:dirt_with_rainforest_litter",
-    "aotearoa:forest_peat",
-    "aotearoa:restiad_peat",
-		"aotearoa:gumland_soil",
-    "aotearoa:dirt_with_dark_litter",
-    "aotearoa:dirt_with_dry_litter",
-    "aotearoa:dirt_with_moss",
-    "aotearoa:dirt_with_beech_litter",
+    "hades_aotearoa:forest_peat",
+    "hades_aotearoa:restiad_peat",
+		"hades_aotearoa:gumland_soil",
+    "hades_aotearoa:dirt_with_dark_litter",
+    "hades_aotearoa:dirt_with_dry_litter",
+    "hades_aotearoa:dirt_with_moss",
+    "hades_aotearoa:dirt_with_beech_litter",
   },
 	sounds = {
     {name = "silvereye", length = 165},
@@ -243,13 +243,13 @@ ambience.add_set("aotearoa_insect_birds_day", {
         (def.totals["default:dirt_with_grass"] or 0)
         + (def.totals["default:dirt_with_dry_grass"] or 0)
         + (def.totals["default:dirt_with_rainforest_litter"] or 0)
-        + (def.totals["aotearoa:forest_peat"] or 0)
-        + (def.totals["aotearoa:restiad_peat"] or 0)
-        + (def.totals["aotearoa:dirt_with_dark_litter"] or 0)
-				+ (def.totals["aotearoa:dirt_with_dry_litter"] or 0)
-				+ (def.totals["aotearoa:gumland_soil"] or 0)
-				+ (def.totals["aotearoa:dirt_with_beech_litter"] or 0)
-        + (def.totals["aotearoa:dirt_with_moss"] or 0)
+        + (def.totals["hades_aotearoa:forest_peat"] or 0)
+        + (def.totals["hades_aotearoa:restiad_peat"] or 0)
+        + (def.totals["hades_aotearoa:dirt_with_dark_litter"] or 0)
+				+ (def.totals["hades_aotearoa:dirt_with_dry_litter"] or 0)
+				+ (def.totals["hades_aotearoa:gumland_soil"] or 0)
+				+ (def.totals["hades_aotearoa:dirt_with_beech_litter"] or 0)
+        + (def.totals["hades_aotearoa:dirt_with_moss"] or 0)
      )
 
 		if (def.tod > 0.2 and def.tod < 0.8)

@@ -27,7 +27,7 @@
 
   function minetest.handle_node_drops(pos, drops, digger)
 
-		if digger:get_wielded_item():get_name() ~= "aotearoa:shovel_green" then
+		if digger:get_wielded_item():get_name() ~= "hades_aotearoa:shovel_green" then
 		return old_handle_node_drops(pos, drops, digger)
 
 		end
@@ -43,7 +43,7 @@
   end
 
 
-  minetest.register_tool("aotearoa:shovel_green", {
+  minetest.register_tool("hades_aotearoa:shovel_green", {
   	description = "Green Shovel",
   	inventory_image = "aotearoa_shovel_green.png",
   	wield_image = "aotearoa_shovel_green.png^[transformR90",
@@ -63,11 +63,11 @@
   --sand to polish the stone (volcanic so have to find it). kawakawa for the blessing. Rope (dyed, for attachment). Food as an offering.
   --maire is good wood for tools.. and another thing to hunt for.
  minetest.register_craft({
-	output = "aotearoa:shovel_green",
+	output = "hades_aotearoa:shovel_green",
 	recipe = {
-		{"aotearoa:kawakawa_leaves", "aotearoa:volcanic_sand", "aotearoa:kawakawa_leaves"},
-		{"dye:red", "aotearoa:pounamu", "aotearoa:flax_rope"},
-		{"aotearoa:cooked_mamaku_pith", "aotearoa:black_maire_wood", "aotearoa:cooked_nikau_shoots"},
+		{"hades_aotearoa:kawakawa_leaves", "hades_aotearoa:volcanic_sand", "hades_aotearoa:kawakawa_leaves"},
+		{"dye:red", "hades_aotearoa:pounamu", "hades_aotearoa:flax_rope"},
+		{"hades_aotearoa:cooked_mamaku_pith", "hades_aotearoa:black_maire_wood", "hades_aotearoa:cooked_nikau_shoots"},
 	}
   })
 

@@ -6,39 +6,40 @@
 --override default textures
 --yellowish clay
 --drop the block, allow plants to grow
-minetest.override_item("default:clay", {
+minetest.register_node("hades_aotearoa:clay", {
 	description = "Clay",
 	tiles = {"aotearoa_clay.png"},
 	groups = {crumbly = 3, soil = 1},
-	drop = 'default:clay',--'default:clay_lump 4',
-	sounds = default.node_sound_dirt_defaults(),
+	drop = 'hades_aotearoa:clay',--'default:clay_lump 4',
+	sounds = hades_sounds.node_sound_dirt_defaults(),
 })
 
 --slabs for clay
 stairs.register_stair_and_slab(
-	"default_clay",
-	"default:clay",
+	"hades_aotearoa_clay",
+	"hades_aotearoa:clay",
 	{crumbly = 3},
 	{"aotearoa_clay.png" },
 	"Clay Stair",
+	"Clay Outer Stair",
+	"Clay Inner Stair",
 	"Clay Slab",
-	default.node_sound_dirt_defaults()
+	hades_sounds.node_sound_dirt_defaults()
 )
 
 
 ----------------------------------------------------
 -- GRAVEL
 
-minetest.register_node("aotearoa:gravel_with_algae", {
+minetest.register_node("hades_aotearoa:gravel_with_algae", {
 	description = "Gravel with Algae",
 	tiles = {"aotearoa_gravel_with_algae.png"},
 	groups = {crumbly = 2, falling_node = 1},
-	sounds = default.node_sound_gravel_defaults(),
+	sounds = hades_sounds.node_sound_gravel_defaults(),
 	drop = {
 		max_items = 1,
 		items = {
-			{items = {'default:flint'}, rarity = 16},
-			{items = {'default:gravel'}}
+			{items = {'hades_core:gravel'}}
 		}
 	}
 })
@@ -48,24 +49,24 @@ minetest.register_node("aotearoa:gravel_with_algae", {
 
 -----------------------------------------------------
 --CLAY
-minetest.register_node("aotearoa:gumland_hardpan", {
+minetest.register_node("hades_aotearoa:gumland_hardpan", {
 	description = "Gumland Hardpan",
 	tiles = {"aotearoa_gumland_hardpan.png"},
 	groups = {crumbly = 2},
 	drop = {
 		max_items = 2,
 		items = {
-			{items = {"aotearoa:kauri_gum"}, rarity = 15 },
-			{items = {'default:clay'} }
+			{items = {"hades_aotearoa:kauri_gum"}, rarity = 15 },
+			{items = {'hades_aotearoa:clay'} }
 		}
 	},
-	sounds = default.node_sound_dirt_defaults({
+	sounds = hades_sounds.node_sound_dirt_defaults({
 		footstep = {name = "aotearoa_mud", gain = 0.4},
 		dug = {name = "aotearoa_mud", gain = 0.4},
 	}),
 })
 
-minetest.register_node("aotearoa:gumland_soil", {
+minetest.register_node("hades_aotearoa:gumland_soil", {
 	description = "Gumland Soil",
 	tiles = {"aotearoa_gumland_soil.png"},
 	tiles = {
@@ -78,11 +79,11 @@ minetest.register_node("aotearoa:gumland_soil", {
 	drop = {
 		max_items = 2,
 		items = {
-			{items = {"aotearoa:kauri_gum"}, rarity = 20 },
-			{items = {'default:clay'} }
+			{items = {"hades_aotearoa:kauri_gum"}, rarity = 20 },
+			{items = {'hades_aotearoa:clay'} }
 		}
 	},
-	sounds = default.node_sound_dirt_defaults({
+	sounds = hades_sounds.node_sound_dirt_defaults({
 		footstep = {name = "aotearoa_mud", gain = 0.4},
 		dug = {name = "aotearoa_mud", gain = 0.4},
 	}),
@@ -110,7 +111,7 @@ for i in ipairs(aotearoa.dirtlist) do
 	local bottext = aotearoa.dirtlist[i][3]
 	local sidetext = aotearoa.dirtlist[i][4]
 
-		minetest.register_node("aotearoa:"..dirtname, {
+		minetest.register_node("hades_aotearoa:"..dirtname, {
 			description = dirtdesc,
 			tiles = {
 				"aotearoa_"..dirtname..".png",
@@ -119,8 +120,8 @@ for i in ipairs(aotearoa.dirtlist) do
 				tileable_vertical = false}
 			},
 			groups = {crumbly = 3, soil = 1, spreading_dirt_type = 1},
-			drop = "default:dirt",
-			sounds = default.node_sound_dirt_defaults({
+			drop = "hades_core:dirt",
+			sounds = hades_sounds.node_sound_dirt_defaults({
 				footstep = {name = "default_grass_footstep", gain = 0.4},
 			}),
 		})
@@ -143,28 +144,29 @@ for i in ipairs(aotearoa.sandlist) do
 	local sandname = aotearoa.sandlist[i][1]
 	local sanddesc = aotearoa.sandlist[i][2]
 
-		minetest.register_node("aotearoa:"..sandname, {
+		minetest.register_node("hades_aotearoa:"..sandname, {
 			description = sanddesc,
 			tiles = {	"aotearoa_"..sandname..".png"},
 			groups = {crumbly = 3, falling_node = 1, sand = 1},
-			sounds = default.node_sound_sand_defaults(),
+			sounds = hades_sounds.node_sound_sand_defaults(),
 		})
 
 end
 
 --cook volcanic_sand to obsidian
+--[[
 minetest.register_craft({
 	type = "cooking",
-	output = "default:obsidian",
-	recipe = "aotearoa:volcanic_sand",
+	output = "hades_core:obsidian",
+	recipe = "hades_aotearoa:volcanic_sand",
 })
-
+--]]
 
 
 --------------------------------------------------
 --PEAT BLOCKS
 
-minetest.register_node("aotearoa:peat", {
+minetest.register_node("hades_aotearoa:peat", {
 	description = "Peat",
 	tiles = {
 		"aotearoa_peat.png",
@@ -173,11 +175,11 @@ minetest.register_node("aotearoa:peat", {
 	drop = {
 		max_items = 1,
 		items = {
-			{items = {"default:iron_lump"}, rarity = 200 },
-			{items = {"aotearoa:peat"} }
+			{items = {"hades_core:iron_lump"}, rarity = 200 },
+			{items = {"hades_aotearoa:peat"} }
 		}
 	},
-	sounds = default.node_sound_dirt_defaults({
+	sounds = hades_sounds.node_sound_dirt_defaults({
 		footstep = {name = "aotearoa_mud", gain = 0.4},
 		dug = {name = "aotearoa_mud", gain = 0.4},
 	}),
@@ -196,7 +198,7 @@ for i in ipairs(aotearoa.peatlist) do
 	local dirtname = aotearoa.peatlist[i][1]
 	local dirtdesc = aotearoa.peatlist[i][2]
 
-		minetest.register_node("aotearoa:"..dirtname, {
+		minetest.register_node("hades_aotearoa:"..dirtname, {
 			description = dirtdesc,
 			tiles = {
 				"aotearoa_"..dirtname..".png",
@@ -208,11 +210,11 @@ for i in ipairs(aotearoa.peatlist) do
 			drop = {
 				max_items = 1,
 				items = {
-					{items = {"default:iron_lump"}, rarity = 1000 },
-					{items = {"aotearoa:peat"} }
+					{items = {"hades_core:iron_lump"}, rarity = 1000 },
+					{items = {"hades_aotearoa:peat"} }
 				}
 			},
-			sounds = default.node_sound_dirt_defaults({
+			sounds = hades_sounds.node_sound_dirt_defaults({
 				footstep = {name = "aotearoa_mud", gain = 0.4},
 				dug = {name = "aotearoa_mud", gain = 0.4},
 			}),
@@ -225,31 +227,33 @@ end
 --SILT
 
 --Silt
-minetest.register_node("aotearoa:silt", {
+minetest.register_node("hades_aotearoa:silt", {
 	description = "Silt",
 	tiles = {
 		"aotearoa_silt.png",
 	},
 	groups = {crumbly = 3, soil = 1,},
-	sounds = default.node_sound_dirt_defaults({
+	sounds = hades_sounds.node_sound_dirt_defaults({
 	}),
 })
 
 --slab for silt
 stairs.register_stair_and_slab(
 	"aotearoa_silt",
-	"aotearoa:silt",
+	"hades_aotearoa:silt",
 	{crumbly = 3},
 	{"aotearoa_silt.png" },
 	"Silt Stair",
+	"Silt Outer Stair",
+	"Silt Inner Stair",
 	"Silt Slab",
-	default.node_sound_dirt_defaults()
+	hades_sounds.node_sound_dirt_defaults()
 )
 
 
 --Mud (for swamps and estuaries)
 --this is so you sink in
-minetest.register_node("aotearoa:mud_sinking", {
+minetest.register_node("hades_aotearoa:mud_sinking", {
 	description = "Sinking Mud",
 	tiles = {
 		{
@@ -270,15 +274,15 @@ minetest.register_node("aotearoa:mud_sinking", {
 	drowning = 1,
 	post_effect_color = {a = 250, r = 20, g = 20, b = 20},
 	groups = {crumbly = 3, puts_out_fire = 1, cools_lava = 1},
-	drop = "aotearoa:silt",
-	sounds = default.node_sound_dirt_defaults({
+	drop = "hades_aotearoa:silt",
+	sounds = hades_sounds.node_sound_dirt_defaults({
 		footstep = {name = "default_water_footstep", gain = 0.2},
 		dug = {name = "aotearoa_mud", gain = 0.4},
 	}),
 })
 
 --solid mud
-minetest.register_node("aotearoa:mud", {
+minetest.register_node("hades_aotearoa:mud", {
 	description = "Mud",
 	tiles = {
 		"aotearoa_mud.png",
@@ -288,8 +292,8 @@ minetest.register_node("aotearoa:mud", {
 	--pointable = false,
 	--buildable_to = true,
 	groups = {crumbly = 3, puts_out_fire = 1},
-	drop = "aotearoa:silt",
-	sounds = default.node_sound_dirt_defaults({
+	drop = "hades_aotearoa:silt",
+	sounds = hades_sounds.node_sound_dirt_defaults({
 		footstep = {name = "aotearoa_mud", gain = 0.4},
 		dug = {name = "aotearoa_mud", gain = 0.4},
 	}),
@@ -298,7 +302,7 @@ minetest.register_node("aotearoa:mud", {
 -----------------------------------------------
 --Boiling Mud
 
-minetest.register_node("aotearoa:boiling_mud_source", {
+minetest.register_node("hades_aotearoa:boiling_mud_source", {
 	description = "Boiling Mud Source",
 	drawtype = "liquid",
 	tiles = {
@@ -330,23 +334,23 @@ minetest.register_node("aotearoa:boiling_mud_source", {
 	diggable = false,
 	buildable_to = true,
 	is_ground_content = false,
-	drop = "aotearoa:silt",
+	drop = "hades_aotearoa:silt",
 	drowning = 1,
 	liquidtype = "source",
-	liquid_alternative_flowing = "aotearoa:boiling_mud_flowing",
-	liquid_alternative_source = "aotearoa:boiling_mud_source",
+	liquid_alternative_flowing = "hades_aotearoa:boiling_mud_flowing",
+	liquid_alternative_source = "hades_aotearoa:boiling_mud_source",
 	liquid_viscosity = 7,
 	liquid_renewable = false,
 	damage_per_second = 1,
 	post_effect_color = {a = 200, r = 73, g = 64, b = 55},
 	groups = {liquid = 2},
-	sounds = default.node_sound_dirt_defaults({
+	sounds = hades_sounds.node_sound_dirt_defaults({
 		footstep = {name = "aotearoa_mud", gain = 0.4},
 		dug = {name = "aotearoa_mud", gain = 0.4},
 	}),
 })
 
-minetest.register_node("aotearoa:boiling_mud_flowing", {
+minetest.register_node("hades_aotearoa:boiling_mud_flowing", {
 	description = "Boiling Mud Lava",
 	drawtype = "flowingliquid",
 	tiles = {"aotearoa_boiling_mud.png"},
@@ -382,15 +386,15 @@ minetest.register_node("aotearoa:boiling_mud_flowing", {
 	drop = "",
 	drowning = 1,
 	liquidtype = "flowing",
-	liquid_alternative_flowing = "aotearoa:boiling_mud_flowing",
-	liquid_alternative_source = "aotearoa:boiling_mud_source",
+	liquid_alternative_flowing = "hades_aotearoa:boiling_mud_flowing",
+	liquid_alternative_source = "hades_aotearoa:boiling_mud_source",
 	liquid_viscosity = 7,
 	liquid_renewable = false,
 	liquid_range = 2,
 	damage_per_second = 1,
 	post_effect_color = {a = 200, r = 73, g = 64, b = 55},
 	groups = {liquid = 2,	not_in_creative_inventory = 1},
-	sounds = default.node_sound_dirt_defaults({
+	sounds = hades_sounds.node_sound_dirt_defaults({
 		footstep = {name = "aotearoa_mud", gain = 0.4},
 		dug = {name = "aotearoa_mud", gain = 0.4},
 	}),
@@ -400,13 +404,13 @@ minetest.register_node("aotearoa:boiling_mud_flowing", {
 
 -----------------------------------------------------
 --SEASHELLS
-minetest.register_node("aotearoa:seashells", {
+minetest.register_node("hades_aotearoa:seashells", {
 	description = "Seashells",
 	tiles = {
 		"aotearoa_seashells.png",
 	},
 	groups = {crumbly = 3, falling_node = 1},
-	sounds = default.node_sound_gravel_defaults({
+	sounds = hades_sounds.node_sound_gravel_defaults({
 	}),
 })
 
@@ -419,18 +423,18 @@ minetest.register_node("aotearoa:seashells", {
 aotearoa.stonelist = {
 	{"pounamu", "Pounamu", 1, 1,},
 	{"pale_sandstone", "Pale Sandstone",3,2, "sediment", "default:sand",},
-	{"grey_sandstone", "Grey Sandstone",3,2, "sediment", "aotearoa:river_sand",},
-	{"siltstone", "Siltstone", 3, 2, "sediment", "aotearoa:silt",},
-	{"claystone", "Claystone", 3, 2, "sediment", "default:clay",},
+	{"grey_sandstone", "Grey Sandstone",3,2, "sediment", "hades_aotearoa:river_sand",},
+	{"siltstone", "Siltstone", 3, 2, "sediment", "hades_aotearoa:silt",},
+	{"claystone", "Claystone", 3, 2, "sediment", "hades_aotearoa:clay",},
 	{"conglomerate", "Conglomerate", 3, 2, "sediment", "default:gravel",},
-	{"schist", "Schist", 2, 2, "cooked", "", {"aotearoa:greywacke", "aotearoa:andesite", "aotearoa:scoria", "aotearoa:basalt"}},
-	{"coquina_limestone", "Coquina Limestone", 3, 2, "sediment", "aotearoa:seashells",},
-	{"limestone", "Limestone", 2, 2, "cooked", "", {"aotearoa:coquina_limestone","default:coral"}},
+	{"schist", "Schist", 2, 2, "cooked", "", {"hades_aotearoa:greywacke", "hades_aotearoa:andesite", "hades_aotearoa:scoria", "hades_aotearoa:basalt"}},
+	{"coquina_limestone", "Coquina Limestone", 3, 2, "sediment", "hades_aotearoa:seashells",},
+	{"limestone", "Limestone", 2, 2, "cooked", "", {"hades_aotearoa:coquina_limestone","default:coral"}},
 	{"concrete","Concrete",3,2,},
 	{"andesite", "Andesite", 3, 2,},
 	{"granite", "Granite", 1, 1,},
-	{"greywacke", "Greywacke", 3, 2, "cooked", "", {"aotearoa:siltstone","aotearoa:claystone", "aotearoa:pale_sandstone","aotearoa:grey_sandstone","default:sandstone", "default:silver_sandstone", "default:desert_sandstone"}},
-	{"gneiss", "Gneiss", 1, 1, "cooked", "", {"aotearoa:schist","aotearoa:granite"}},
+	{"greywacke", "Greywacke", 3, 2, "cooked", "", {"hades_aotearoa:siltstone","hades_aotearoa:claystone", "hades_aotearoa:pale_sandstone","hades_aotearoa:grey_sandstone","default:sandstone", "default:silver_sandstone", "default:desert_sandstone"}},
+	{"gneiss", "Gneiss", 1, 1, "cooked", "", {"hades_aotearoa:schist","hades_aotearoa:granite"}},
 	{"scoria", "Scoria", 3, 2,},
 	{"basalt", "Basalt", 2, 2,},
 }
@@ -458,7 +462,7 @@ for i in ipairs(aotearoa.stonelist) do
 		g2 = {cracky = hardness2, soft_stone = 1}
 
 		minetest.register_craft({
-			output = "aotearoa:"..stonename,
+			output = "hades_aotearoa:"..stonename,
 			recipe = {
 				{sediment, sediment,""},
 				{sediment, sediment,""},
@@ -468,7 +472,7 @@ for i in ipairs(aotearoa.stonelist) do
 		minetest.register_craft({
 			output = sediment.." 4",
 			recipe = {
-				{"aotearoa:"..stonename},
+				{"hades_aotearoa:"..stonename},
 			}
 		})
 
@@ -484,7 +488,7 @@ for i in ipairs(aotearoa.stonelist) do
 		for p, v in pairs(precursor) do
 			minetest.register_craft({
 				type = "cooking",
-				output = "aotearoa:"..stonename,
+				output = "hades_aotearoa:"..stonename,
 				recipe = v,
 				cooktime = 120,
 			})
@@ -492,79 +496,84 @@ for i in ipairs(aotearoa.stonelist) do
 	end
 
 	--register raw
-	minetest.register_node("aotearoa:"..stonename, {
+	minetest.register_node("hades_aotearoa:"..stonename, {
 		description = stonedesc,
 		tiles = {"aotearoa_"..stonename..".png"},
 		groups = g,
-		drop = "aotearoa:"..stonename,
-		sounds = default.node_sound_stone_defaults(),
+		drop = "hades_aotearoa:"..stonename,
+		sounds = hades_sounds.node_sound_stone_defaults(),
 	})
 
 	--blocks and bricks
-	minetest.register_node("aotearoa:"..stonename.."brick", {
+	minetest.register_node("hades_aotearoa:"..stonename.."brick", {
 		description = stonedesc.." Brick",
 		tiles = {"aotearoa_"..stonename.."brick.png"},
 		groups = g2,
-		sounds = default.node_sound_stone_defaults(),
+		sounds = hades_sounds.node_sound_stone_defaults(),
 	})
 
-	minetest.register_node("aotearoa:"..stonename.."_block", {
+	minetest.register_node("hades_aotearoa:"..stonename.."_block", {
 		description = stonedesc.. " Block",
 		tiles = {"aotearoa_"..stonename.."_block.png"},
 		groups = g2,
-		sounds = default.node_sound_stone_defaults(),
+		sounds = hades_sounds.node_sound_stone_defaults(),
 	})
 
 	--stairs and slabs
 	--raw
 	stairs.register_stair_and_slab(
 		"aotearoa_"..stonename,
-		"aotearoa:"..stonename,
+		"hades_aotearoa:"..stonename,
 		{cracky = hardness,},
 		{"aotearoa_"..stonename..".png" },
 		stonedesc.." Stair",
+		stonedesc.." Outer Stair",
+		stonedesc.." Inner Stair",
 		stonedesc.." Slab",
-		default.node_sound_stone_defaults()
+		hades_sounds.node_sound_stone_defaults()
 	)
 
 	--brick
 	stairs.register_stair_and_slab(
 		"aotearoa_"..stonename.."brick",
-		"aotearoa:"..stonename.."brick",
+		"hades_aotearoa:"..stonename.."brick",
 		{cracky = hardness2,},
 		{"aotearoa_"..stonename.."brick.png" },
 		stonedesc.." Brick Stair",
+		stonedesc.." Brick Outer Stair",
+		stonedesc.." Brick Inner Stair",
 		stonedesc.." Brick Slab",
-		default.node_sound_stone_defaults()
+		hades_sounds.node_sound_stone_defaults()
 	)
 
 	--block
 	stairs.register_stair_and_slab(
 		"aotearoa_"..stonename.."_block",
-		"aotearoa:"..stonename.."_block",
+		"hades_aotearoa:"..stonename.."_block",
 		{cracky = hardness2,},
 		{"aotearoa_"..stonename.."_block.png" },
 		stonedesc.." Block Stair",
+		stonedesc.." Block Outer Stair",
+		stonedesc.." Block Inner Stair",
 		stonedesc.." Block Slab",
-		default.node_sound_stone_defaults()
+		hades_sounds.node_sound_stone_defaults()
 	)
 
 	--craft
 	minetest.register_craft({
-		output = "aotearoa:"..stonename.."brick 4",
+		output = "hades_aotearoa:"..stonename.."brick 4",
 		recipe = {
-			{"aotearoa:"..stonename, "aotearoa:"..stonename,""},
-			{"aotearoa:"..stonename, "aotearoa:"..stonename,""},
-			{"", "",""},
+			{"hades_aotearoa:"..stonename, "hades_aotearoa:"..stonename,""},
+			{"","hades_aotearoa:"..stonename, "hades_aotearoa:"..stonename},
 		}
 	})
 
 	minetest.register_craft({
-		output = "aotearoa:"..stonename.."_block 9",
+		output = "hades_aotearoa:"..stonename.."_block 9",
 		recipe = {
-			{"aotearoa:"..stonename, "aotearoa:"..stonename, "aotearoa:"..stonename},
-			{"aotearoa:"..stonename, "aotearoa:"..stonename, "aotearoa:"..stonename},
-			{"aotearoa:"..stonename, "aotearoa:"..stonename, "aotearoa:"..stonename},
+			{"hades_aotearoa:"..stonename, "hades_aotearoa:"..stonename, "hades_aotearoa:"..stonename},
+			{"hades_aotearoa:"..stonename, "hades_aotearoa:"..stonename, "hades_aotearoa:"..stonename},
+			{"hades_aotearoa:"..stonename, "hades_aotearoa:"..stonename, "hades_aotearoa:"..stonename},
 		}
 	})
 
@@ -576,52 +585,52 @@ end
 ---------------------
 --Quartz with gold
 
-minetest.register_node("aotearoa:quartz_with_gold", {
+minetest.register_node("hades_aotearoa:quartz_with_gold", {
 	description = "Quartz with Gold",
 	tiles = {"aotearoa_quartz_with_gold.png"},
 	groups = {cracky = 2},
 	drop = "default:gold_lump",
-	sounds = default.node_sound_stone_defaults(),
+	sounds = hades_sounds.node_sound_stone_defaults(),
 	})
 
 -------------------
 --Limonite (iron ore)
 
-minetest.register_node("aotearoa:limonite", {
+minetest.register_node("hades_aotearoa:limonite", {
 	description = "Limonite",
 	tiles = {"aotearoa_limonite.png"},
 	groups = {cracky = 3},
 	drop = "default:iron_lump",
-	sounds = default.node_sound_stone_defaults(),
+	sounds = hades_sounds.node_sound_stone_defaults(),
 })
 
 -------------------
 --chalcopyrite (copper ore)
 
-minetest.register_node("aotearoa:chalcopyrite", {
+minetest.register_node("hades_aotearoa:chalcopyrite", {
 	description = "Chalcopyrite",
 	tiles = {"aotearoa_chalcopyrite.png"},
 	groups = {cracky = 3},
 	drop = "default:copper_lump",
-	sounds = default.node_sound_stone_defaults(),
+	sounds = hades_sounds.node_sound_stone_defaults(),
 })
 
 -------------------
 --cassiterite (tin ore)
 
-minetest.register_node("aotearoa:cassiterite", {
+minetest.register_node("hades_aotearoa:cassiterite", {
 	description = "Cassiterite",
 	tiles = {"aotearoa_cassiterite.png"},
 	groups = {cracky = 3},
-	drop = "default:tin_lump",
-	sounds = default.node_sound_stone_defaults(),
+	drop = "hades_core:tin_lump",
+	sounds = hades_sounds.node_sound_stone_defaults(),
 })
 
 
 ---------------------------------------------
 --ROTTEN WOOD
 
-minetest.register_node("aotearoa:rotten_wood", {
+minetest.register_node("hades_aotearoa:rotten_wood", {
 	description = "Rotten Wood",
 	tiles = {
 		"aotearoa_rotten_wood_top.png",
@@ -631,6 +640,6 @@ minetest.register_node("aotearoa:rotten_wood", {
 	paramtype2 = "facedir",
 	is_ground_content = false,
 	groups = {choppy = 3, oddly_breakable_by_hand = 3, flammable = 2},
-	sounds = default.node_sound_wood_defaults(),
+	sounds = hades_sounds.node_sound_wood_defaults(),
 	on_place = minetest.rotate_node,
 })
