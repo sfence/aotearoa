@@ -30,6 +30,7 @@ minetest.log("MOD: Aotearoa loaded")
 ----------------------
 --intro world creation (the geneaology of creation)
 --seeds to make up for removing default sources
+--[[
 minetest.register_on_newplayer(function(player)
   local you = player:get_player_name()
 
@@ -39,6 +40,7 @@ minetest.register_on_newplayer(function(player)
   inventory:add_item("main", "default:axe_stone")  
   minetest.sound_play("te_kore_whakapapa", {to_player = you, gain = 2})
 end)
+--]]
 
 ----------------------------------------
 --custom groups:

@@ -15,7 +15,7 @@ minetest.register_node("hades_aotearoa:clay", {
 })
 
 --slabs for clay
-stairs.register_stair_and_slab(
+hades_stairs.register_stair_and_slab(
 	"hades_aotearoa_clay",
 	"hades_aotearoa:clay",
 	{crumbly = 3},
@@ -238,7 +238,7 @@ minetest.register_node("hades_aotearoa:silt", {
 })
 
 --slab for silt
-stairs.register_stair_and_slab(
+hades_stairs.register_stair_and_slab(
 	"aotearoa_silt",
 	"hades_aotearoa:silt",
 	{crumbly = 3},
@@ -455,6 +455,7 @@ for i in ipairs(aotearoa.stonelist) do
 
 	--make soft sedimentary rocks from/into sediment
 	--and allow them to be dug
+  --[[
 	local g = nil
 	if type == "sediment" then
 		g = {cracky = hardness, crumbly = 1, soft_stone = 1}
@@ -494,6 +495,7 @@ for i in ipairs(aotearoa.stonelist) do
 			})
 		end
 	end
+  --]]
 
 	--register raw
 	minetest.register_node("hades_aotearoa:"..stonename, {
@@ -521,7 +523,7 @@ for i in ipairs(aotearoa.stonelist) do
 
 	--stairs and slabs
 	--raw
-	stairs.register_stair_and_slab(
+	hades_stairs.register_stair_and_slab(
 		"aotearoa_"..stonename,
 		"hades_aotearoa:"..stonename,
 		{cracky = hardness,},
@@ -534,7 +536,7 @@ for i in ipairs(aotearoa.stonelist) do
 	)
 
 	--brick
-	stairs.register_stair_and_slab(
+	hades_stairs.register_stair_and_slab(
 		"aotearoa_"..stonename.."brick",
 		"hades_aotearoa:"..stonename.."brick",
 		{cracky = hardness2,},
@@ -547,7 +549,7 @@ for i in ipairs(aotearoa.stonelist) do
 	)
 
 	--block
-	stairs.register_stair_and_slab(
+	hades_stairs.register_stair_and_slab(
 		"aotearoa_"..stonename.."_block",
 		"hades_aotearoa:"..stonename.."_block",
 		{cracky = hardness2,},

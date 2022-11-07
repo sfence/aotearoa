@@ -139,7 +139,7 @@ for i in ipairs(aotearoa.treelist) do
 		})
 
 	--stairs etc
-	stairs.register_stair_and_slab(
+	hades_stairs.register_stair_and_slab(
 		"aotearoa_"..treename.."_tree",
 		"hades_aotearoa:"..treename.."_tree",
 		{snappy=1, choppy=2, oddly_breakable_by_hand=1, flammable=2 },
@@ -152,7 +152,7 @@ for i in ipairs(aotearoa.treelist) do
 		hades_sounds.node_sound_wood_defaults()
 	)
 
-	stairs.register_stair_and_slab(
+	hades_stairs.register_stair_and_slab(
 		"aotearoa_"..treename.."_wood",
 		"hades_aotearoa:"..treename.."_wood",
 		{snappy=1, choppy=2, oddly_breakable_by_hand=2, flammable=2},
@@ -174,7 +174,7 @@ for i in ipairs(aotearoa.treelist) do
 	})
 
 	--gate
-	doors.register_fencegate("hades_aotearoa:gate_"..treename.."_wood",  {
+	hades_doors.register_fencegate("hades_aotearoa:gate_"..treename.."_wood",  {
 		description = treedesc.." Wood Gate"..sci_name,
 		texture = "aotearoa_"..treename.."_wood.png",
 		material = "hades_aotearoa:"..treename.."_wood",
@@ -369,7 +369,7 @@ for i in ipairs(aotearoa.shrublist) do
 
 
 	minetest.register_craft({
-	output = "default:stick 2",
+	output = "hades_core:stick 2",
 	recipe = {
 		{"hades_aotearoa:"..treename.."_tree"},
 	}

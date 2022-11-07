@@ -9,7 +9,7 @@ dofile(aotearoa.path .. "/green_shovel.lua")
 ---------------------------------------------------------
 --Furnace from soft sedimentary rocks
 minetest.register_craft({
-	output = 'default:furnace',
+	output = 'hades_furnaces:furnace',
 	recipe = {
 		{'group:soft_stone', 'group:soft_stone', 'group:soft_stone'},
 		{'group:soft_stone', '', 'group:soft_stone'},
@@ -21,14 +21,16 @@ minetest.register_craft({
 -----------------------------------------
 --Stone Axe recipe from gravel
 -- to make up for unbreakable trees.
+--[[
 minetest.register_craft({
-	output = 'default:axe_stone',
+	output = 'hades_core:axe_stone',
 	recipe = {
-		{'default:gravel', 'default:gravel'},
-		{'default:gravel', 'group:stick'},
+		{'hades_core:gravel', 'hades_core:gravel'},
+		{'hades_core:gravel', 'group:stick'},
 		{'', 'group:stick'},
 	}
 })
+--]]
 
 
 -------------------------
@@ -47,7 +49,7 @@ minetest.register_craft({
 ------------
 --Kauri gum torch
 minetest.register_craft({
-	output = 'default:torch 4',
+	output = 'hades_core:torch 4',
 	recipe = {
 		{'hades_aotearoa:kauri_gum'},
 		{'group:stick'},
@@ -64,21 +66,21 @@ minetest.register_craft({
 --Paper
 
 minetest.register_craft({
-	output = 'default:paper',
+	output = 'hades_core:paper',
 	recipe = {
 		{'hades_aotearoa:kauri_grass', 'hades_aotearoa:kauri_grass', 'hades_aotearoa:kauri_grass'},
 	}
 })
 
 minetest.register_craft({
-	output = 'default:paper',
+	output = 'hades_core:paper',
 	recipe = {
 		{'hades_aotearoa:flax', 'hades_aotearoa:flax', 'hades_aotearoa:flax'},
 	}
 })
 
 minetest.register_craft({
-	output = 'default:paper',
+	output = 'hades_core:paper',
 	recipe = {
 		{'hades_aotearoa:raupo', 'hades_aotearoa:raupo', 'hades_aotearoa:raupo'},
 	}
@@ -102,18 +104,20 @@ minetest.register_craft({
 ----------------
 --White Dye
 --Taioma. White, from burnt clay with shark oil.
+--[[
 minetest.register_craft({
 	type = "cooking",
-	output = "dye:white 4",
-	recipe = "default:clay",
+	output = "hades_dye:white 4",
+	recipe = "hades_core:clay",
 })
+--]]
 
 -------------
 --Red Dye
 --Kauri grass (technically the berries)
 minetest.register_craft({
 	type = "shapeless",
-	output = "dye:red 4",
+	output = "hades_dye:red 4",
 	recipe = {"hades_aotearoa:kauri_grass"},
 })
 
@@ -131,22 +135,22 @@ minetest.register_craft({
 
 --from Kauri soot
 minetest.register_craft({
-	output = "dye:blue 4",
+	output = "hades_dye:blue 4",
   recipe = {
     {'hades_aotearoa:kauri_tree'},
-    {'default:torch'},
+    {'hades_core:torch'},
   },
-  replacements = {{"default:torch", "default:torch"}}
+  replacements = {{"hades_core:torch", "hades_core:torch"}}
 })
 
 --from Rimu soot
 minetest.register_craft({
-	output = "dye:blue 4",
+	output = "hades_dye:blue 4",
   recipe = {
     {'hades_aotearoa:rimu_tree'},
-    {'default:torch'},
+    {'hades_core:torch'},
   },
-  replacements = {{"default:torch", "default:torch"}}
+  replacements = {{"hades_core:torch", "hades_core:torch"}}
 })
 
 --------------
@@ -154,22 +158,22 @@ minetest.register_craft({
 
 --from kauri gum soot
 minetest.register_craft({
-	output = "dye:black 4",
+	output = "hades_dye:black 4",
   recipe = {
     {'hades_aotearoa:kauri_gum'},
-    {'default:torch'},
+    {'hades_core:torch'},
   },
-  replacements = {{"default:torch", "default:torch"}}
+  replacements = {{"hades_core:torch", "hades_core:torch"}}
 })
 
 --from Kahikatea soot
 minetest.register_craft({
-	output = "dye:black 4",
+	output = "hades_dye:black 4",
   recipe = {
     {'hades_aotearoa:kahikatea_tree'},
-    {'default:torch'},
+    {'hades_core:torch'},
   },
-  replacements = {{"default:torch", "default:torch"}}
+  replacements = {{"hades_core:torch", "hades_core:torch"}}
 })
 
 --Karo, but don't know how it is made.
@@ -188,7 +192,7 @@ minetest.register_craft({
 -- from hinau bark. Not sure how done. Possibly boiled
 minetest.register_craft({
 	type = "cooking",
-	output = "dye:black 4",
+	output = "hades_dye:black 4",
 	recipe = "hades_aotearoa:hinau_tree",
 })
 
@@ -197,12 +201,12 @@ minetest.register_craft({
 --from tree soot.
 --from Kahikatea soot
 minetest.register_craft({
-	output = "dye:brown 4",
+	output = "hades_dye:brown 4",
   recipe = {
     {'hades_aotearoa:miro_tree'},
-    {'default:torch'},
+    {'hades_core:torch'},
   },
-  replacements = {{"default:torch", "default:torch"}}
+  replacements = {{"hades_core:torch", "hades_core:torch"}}
 })
 
 
@@ -211,7 +215,7 @@ minetest.register_craft({
 -- by boiling kamahi
 minetest.register_craft({
 	type = "cooking",
-	output = "dye:red 4",
+	output = "hades_dye:red 4",
 	recipe = "hades_aotearoa:kamahi_tree",
 })
 
@@ -221,13 +225,13 @@ minetest.register_craft({
 -- by boiling Rangiora bark
 minetest.register_craft({
 	type = "cooking",
-	output = "dye:yellow 4",
+	output = "hades_dye:yellow 4",
 	recipe = "hades_aotearoa:rangiora_tree",
 })
 
 --from kowhai flowers
 minetest.register_craft({
-	output = "dye:yellow 4",
+	output = "hades_dye:yellow 4",
   recipe = {
     {'hades_aotearoa:kowhai_leaves'},
   },
@@ -571,17 +575,17 @@ minetest.register_craft({
 
 --make dirt
 minetest.register_craft({
-	output = 'default:dirt 4',
+	output = 'hades_core:dirt 4',
 	recipe = {
-		{'group:sand', 'default:clay'},
+		{'group:sand', 'hades_core:clay'},
 		{'hades_aotearoa:silt', 'hades_aotearoa:peat'},
 	}
 })
 
 minetest.register_craft({
-	output = 'default:dirt 4',
+	output = 'hades_core:dirt 4',
 	recipe = {
-		{'group:sand', 'default:clay'},
+		{'group:sand', 'hades_core:clay'},
 		{'hades_aotearoa:silt', 'hades_aotearoa:rotten_wood'},
 	}
 })
@@ -593,7 +597,7 @@ minetest.register_craft({
 --iron sand is famously difficult to smelt.
 minetest.register_craft({
 	type = 'cooking',
-	output = 'default:iron_lump',
+	output = 'hades_core:iron_lump',
 	recipe = 'hades_aotearoa:iron_sand',
 	cooktime = 30,
 })
@@ -626,13 +630,13 @@ minetest.register_craftitem("hades_aotearoa:crushed_lime", {
 minetest.register_craft({
 	output = "hades_aotearoa:crushed_lime",
 	recipe = {
-		{'default:steel_ingot'},
+		{'hades_core:steel_ingot'},
     {'hades_aotearoa:coquina_limestone'},
-    {'default:steel_ingot'},
+    {'hades_core:steel_ingot'},
   },
   replacements = {
-		{"default:steel_ingot", "default:steel_ingot"},
-		{"default:steel_ingot", "default:steel_ingot"}
+		{"hades_core:steel_ingot", "hades_core:steel_ingot"},
+		{"hades_core:steel_ingot", "hades_core:steel_ingot"}
 	}
 })
 
@@ -640,13 +644,13 @@ minetest.register_craft({
 minetest.register_craft({
 	output = "hades_aotearoa:crushed_lime",
   recipe = {
-		{'default:steel_ingot'},
+		{'hades_core:steel_ingot'},
     {'hades_aotearoa:limestone'},
-    {'default:steel_ingot'},
+    {'hades_core:steel_ingot'},
   },
   replacements = {
-		{"default:steel_ingot", "default:steel_ingot"},
-		{"default:steel_ingot", "default:steel_ingot"}
+		{"hades_core:steel_ingot", "hades_core:steel_ingot"},
+		{"hades_core:steel_ingot", "hades_core:steel_ingot"}
 	}
 })
 
@@ -666,7 +670,7 @@ minetest.register_craft({
 minetest.register_craft({
 	output = "hades_aotearoa:concrete 6",
 	recipe = {
-		{"hades_aotearoa:quicklime", "group:sand", "default:gravel"},
+		{"hades_aotearoa:quicklime", "group:sand", "hades_core:gravel"},
 	}
 })
 
@@ -677,8 +681,8 @@ minetest.register_craft({
 
 minetest.register_craft({
 	type = 'cooking',
-	output = 'default:diamond',
-	recipe = 'default:coalblock',
+	output = 'hades_core:diamond',
+	recipe = 'hades_core:coalblock',
 	cooktime = 360,
 })
 ]]
@@ -690,10 +694,10 @@ minetest.register_craft({
 -- pounamu is the most mystical rock... so it can be transformed.
 
 minetest.register_craft({
-	output = 'default:mese',
+	output = 'hades_core:mese',
 	recipe = {
-		{'hades_aotearoa:granite', 'default:gold_ingot', 'hades_aotearoa:gneiss'},
-		{'default:copper_ingot', 'hades_aotearoa:pounamu', 'default:steel_ingot'},
-		{'hades_aotearoa:andesite', 'default:tin_ingot', 'hades_aotearoa:limestone'},
+		{'hades_aotearoa:granite', 'hades_core:gold_ingot', 'hades_aotearoa:gneiss'},
+		{'hades_core:copper_ingot', 'hades_aotearoa:pounamu', 'hades_core:steel_ingot'},
+		{'hades_aotearoa:andesite', 'hades_core:tin_ingot', 'hades_aotearoa:limestone'},
 	}
 })
